@@ -8,7 +8,9 @@ import br.com.swconsultoria.certificado.exception.CertificadoException;
 import br.com.swconsultoria.nfe.dom.enuns.AmbienteEnum;
 import br.com.swconsultoria.nfe.dom.enuns.EstadosEnum;
 import br.com.swconsultoria.nfe.util.ConstantesUtil;
+import br.com.swconsultoria.nfe.util.ObjetoUtil;
 
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.util.logging.Level;
@@ -40,6 +42,7 @@ public class ConfiguracoesNfe {
     private boolean validacaoDocumento = true;
     private String arquivoWebService;
     private Integer retry;
+    private InputStream cacert;
 
     /**
      * Este método recebe como parâmetro os dados necessários para iniciar a
@@ -61,6 +64,10 @@ public class ConfiguracoesNfe {
     public static ConfiguracoesNfe criarConfiguracoes(EstadosEnum estado, AmbienteEnum ambiente, Certificado certificado, String pastaSchemas)
             throws CertificadoException {
 
+        ObjetoUtil.verifica(estado).orElseThrow( () -> new IllegalArgumentException("Estado não pode ser Nulo."));
+        ObjetoUtil.verifica(ambiente).orElseThrow( () -> new IllegalArgumentException("Ambiente não pode ser Nulo."));
+        ObjetoUtil.verifica(certificado).orElseThrow( () -> new IllegalArgumentException("Certificado não pode ser Nulo."));
+
         ConfiguracoesNfe configuracoesNfe = new ConfiguracoesNfe();
         configuracoesNfe.setEstado(estado);
         configuracoesNfe.setAmbiente(ambiente);
@@ -80,7 +87,7 @@ public class ConfiguracoesNfe {
         if (Logger.getLogger("").isLoggable(Level.SEVERE)) {
             System.err.println();
             System.err.println("#########################################################");
-            System.err.println("    Api Java Nfe - Versão 4.00.14-SNAPSHOT (B)           ");
+            System.err.println("    Api Java Nfe - Versão 4.00.14-SNAPSHOT (D)           ");
             if (Logger.getLogger("").isLoggable(Level.WARNING)) {
                 System.err.println(" Samuel Olivera - samuel@swconsultoria.com.br ");
             }
@@ -293,4 +300,11 @@ public class ConfiguracoesNfe {
         this.retry = retry;
     }
 
+    public InputStream getCacert() {
+        return cacert;
+    }
+
+    public void setCacert(InputStream cacert) {
+        this.cacert = cacert;
+    }
 }
