@@ -83,13 +83,14 @@ public class WebServiceUtil {
                 throw new NfeException("Estado não possui Consulta Cadastro.");
                 // URLS de ambiente nacional
             } else if (tipoServico.equals(ServicosEnum.DISTRIBUICAO_DFE)
-                    || tipoServico.equals(ServicosEnum.MANIFESTACAO)) {
+                    || tipoServico.equals(ServicosEnum.MANIFESTACAO)
+                    || tipoServico.equals(ServicosEnum.EPEC)) {
                 secao = config.getAmbiente().equals(AmbienteEnum.HOMOLOGACAO) ? "NFe_AN_H" : "NFe_AN_P";
 
             } else if (!tipoServico.equals(ServicosEnum.URL_CONSULTANFCE)
                     && !tipoServico.equals(ServicosEnum.URL_QRCODE) && ObjetoUtil.verifica(url).isPresent()) {
                 secao = url;
-            } else if (config.isContigenciaSCAN()) {
+            } else if (config.isContigenciaSVC()) {
                 // SVC-RS
                 if (config.getEstado().equals(EstadosEnum.GO) || config.getEstado().equals(EstadosEnum.AM)
                         || config.getEstado().equals(EstadosEnum.BA) || config.getEstado().equals(EstadosEnum.CE)

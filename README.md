@@ -1,13 +1,13 @@
-# Java-NFe [![Build Status](https://travis-ci.org/Samuel-Oliveira/Java_NFe.svg?branch=master)](https://travis-ci.org/Samuel-Oliveira/Java_NFe) [![MIT License](https://img.shields.io/github/license/Samuel-Oliveira/Java_NFe.svg) ](https://github.com/Samuel-Oliveira/Java_NFe/blob/master/LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/br.com.swconsultoria/java-nfe.svg?label=Maven%20Central)](https://search.maven.org/artifact/br.com.swconsultoria/java-nfe/4.00.14/jar) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/Samuel-Oliveira/Java_NFe.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Samuel-Oliveira/Java_NFe/context:java) [![Total alerts](https://img.shields.io/lgtm/alerts/g/Samuel-Oliveira/Java_NFe.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Samuel-Oliveira/Java_NFe/alerts/)
+# Java-NFe [![Build Status](https://travis-ci.org/Samuel-Oliveira/Java_NFe.svg?branch=master)](https://travis-ci.org/Samuel-Oliveira/Java_NFe) [![MIT License](https://img.shields.io/github/license/Samuel-Oliveira/Java_NFe.svg) ](https://github.com/Samuel-Oliveira/Java_NFe/blob/master/LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/br.com.swconsultoria/java-nfe.svg?label=Maven%20Central)](https://search.maven.org/artifact/br.com.swconsultoria/java-nfe/4.00.17/jar) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/Samuel-Oliveira/Java_NFe.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Samuel-Oliveira/Java_NFe/context:java) [![Total alerts](https://img.shields.io/lgtm/alerts/g/Samuel-Oliveira/Java_NFe.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Samuel-Oliveira/Java_NFe/alerts/)
 Biblioteca Java para consumo do WebService de NFe/NFCe
 
 ## Dúvidas, Sugestões ou Consultoria
 Entre no Discord do Projeto: https://discord.gg/ZXpqnaV
 
-## Gostou do Projeto? Dê sua colaboração: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TX9K693QQYA6W)
+## Gostou do Projeto? Dê sua colaboração pelo Pix: 01713390108 <img src="https://swconsultoria.com.br/pix.png" width="200">
 
 Para Iniciar : 
-- Caso use Libs baixe o java-nfe-4.00.14.jar (https://github.com/Samuel-Oliveira/Java_NFe/raw/master/java-nfe-4.00.14.jar) e o adicione às bibliotecas de Seu Projeto.
+- Caso use Libs baixe o java-nfe-4.00.17.jar (https://github.com/Samuel-Oliveira/Java_NFe/raw/master/java-nfe-4.00.17.jar) e o adicione às bibliotecas de Seu Projeto.
 
 - Baixe o Schemas.rar (https://github.com/Samuel-Oliveira/Java_NFe/raw/master/schemas.zip) e extraia na sua Máquina.
 
@@ -16,7 +16,7 @@ Para Iniciar :
 <dependency>
     <groupId>br.com.swconsultoria</groupId>
     <artifactId>java-nfe</artifactId>
-    <version>4.00.14</version>
+    <version>4.00.17</version>
 </dependency>
 ```
 
@@ -28,7 +28,7 @@ repositories {
     }
 }
 dependencies {
-    implementation "br.com.swconsultoria:java-nfe:4.00.14"
+    implementation "br.com.swconsultoria:java-nfe:4.00.17"
 }
 ```
 
@@ -38,11 +38,9 @@ ________________________________________________________________________________
 
 # Historico de Versões
 
-## v4.00.15 - SNAPSHOT
+## v4.00.18 - SNAPSHOT - 09/01/2022 - Schemas PL.009f
 - Atualizado Cacert
-- Atualizado Objetos Schema para NT 2020.006
-
-(Atualizar os Schemas: https://github.com/Samuel-Oliveira/Java_NFe/raw/master/Schemas_2020.006.zip)
+- Alteração WebService CE
 
 Snapshot é a versão que se encontra em teste, só use em caso de extrema necessidade.
 Para usar, adicione o repositorio de Snapshot ao Maven:
@@ -56,10 +54,40 @@ Para usar, adicione o repositorio de Snapshot ao Maven:
 <dependency>
     <groupId>br.com.swconsultoria</groupId>
     <artifactId>java-nfe</artifactId>
-    <version>4.00.15-SNAPSHOT</version>
+    <version>4.00.18-SNAPSHOT</version>
 </dependency>
 ```
-Ou baixe o Jar aqui: https://github.com/Samuel-Oliveira/Java_NFe/raw/master/java-nfe-4.00.15-SNAPSHOT.jar
+Ou baixe o Jar aqui: https://github.com/Samuel-Oliveira/Java_NFe/raw/master/java-nfe-4.00.18-SNAPSHOT.jar
+
+## v4.00.17 - 09/08/2021 - Schemas PL.009f
+- Correção de Schemas
+- Atualizado Cacert
+- Rollback das modificações Maven (Deu Ruim)
+- Correção de SOAP
+
+## v4.00.16 - 01/08/2021 - Schemas PL.009f
+- Correção de vunerabilidades Maven
+- Correção Acentuação
+- Atualizado Lib Certificado
+- Atualizado Cacert
+- Corrigido URL NFCe SC
+
+## v4.00.15 - 28/06/2021 - Versão Schemas PL.009f
+- Removido Cacert do Projeto, agora o projeto Java Certificados irá gerenciar os Cacerts.
+- Atualizado Objetos Schema para NT 2020.006 v1.10
+- Alterado nome da propriedade contigenciaSCAN para contigenciaSVC
+- Melhoria nos Logs
+- Atualizado Dependencia Java-Certificado
+- Corrigido erros de Assinatura com repositorio Windows
+- Atualizado Objetos Schema para NT 2020.006 v1.20
+- Adicionado a validação de cancelamento fora do prazo. 
+- Adicinado possibilidade de enviar Evento Manual sem assinatura.
+- Adicionado URLS NFCe de Santa Catarina
+- Correção de Status Serviço MS.
+- Atualizado URL consulta NFCe Goias
+- Atualizado Schemas/Objetos PL.009f
+- Adicionado Compatibilidade com Java 16
+- Atualizado biblioteca Certificado versão 2.6
 
 ## v4.00.14 - 12/02/2021
 - Adicionado 150 - Autorizado Fora do prazo como sucesso na verificação de retorno.
