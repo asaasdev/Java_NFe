@@ -64,6 +64,7 @@ public class XmlNfeUtil {
     private static final String SITUACAO_NFE_RET = "TRetConsSitNFe";
     private static final String RET_RECIBO_NFE = "TRetConsReciNFe";
     private static final String RET_STATUS_SERVICO = "TRetConsStatServ";
+    private static final String RET_CONS_CAD = "TRetConsCad";
 
     private static final String RET_ENV_EVENTO = "TRetEnvEvento";
 
@@ -185,6 +186,11 @@ public class XmlNfeUtil {
                 element = new br.com.swconsultoria.nfe.schema_4.retConsStatServ.ObjectFactory().createRetConsStatServ((br.com.swconsultoria.nfe.schema_4.retConsStatServ.TRetConsStatServ) obj);
                 break;
 
+            case RET_CONS_CAD:
+                context = JAXBContext.newInstance(br.com.swconsultoria.nfe.schema.retConsCad.TRetConsCad.class);
+                element = new br.com.swconsultoria.nfe.schema.retConsCad.ObjectFactory().createRetConsCad((br.com.swconsultoria.nfe.schema.retConsCad.TRetConsCad) obj);
+                break;
+
             case TPROCEVENTO:
                 switch (obj.getClass().getName()) {
                     case TPROCCANCELAR:
@@ -208,8 +214,8 @@ public class XmlNfeUtil {
                         element = XsdUtil.epec.createTProcEvento((br.com.swconsultoria.nfe.schema.envEpec.TProcEvento) obj);
                         break;
                     case TPROCMAN:
-                        context = JAXBContext.newInstance(br.com.swconsultoria.nfe.schema.envEpec.TProcEvento.class);
-                        element = XsdUtil.epec.createTProcEvento((br.com.swconsultoria.nfe.schema.envEpec.TProcEvento) obj);
+                        context = JAXBContext.newInstance(br.com.swconsultoria.nfe.schema.envConfRecebto.TProcEvento.class);
+                        element = XsdUtil.manifestacao.createTProcEvento((br.com.swconsultoria.nfe.schema.envConfRecebto.TProcEvento) obj);
                         break;
                     default:
                         throw new NfeException("Objeto não mapeado no XmlUtil:" + obj.getClass().getSimpleName());
