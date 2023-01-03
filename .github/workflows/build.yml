@@ -32,9 +32,3 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-
       - name: Build
         run: mvn -B test
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
-      - name: Analyze
-        run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
