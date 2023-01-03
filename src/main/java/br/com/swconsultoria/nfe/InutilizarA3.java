@@ -21,9 +21,9 @@ import br.com.swconsultoria.nfe.wsdl.NFeInutilizacao.NFeInutilizacao4Stub;
 @Log
 public class InutilizarA3 {
 
-	static TRetInutNFe inutiliza(ConfiguracoesNfe config, DocumentoEnum tipoDocumento, boolean validar, String xmlAssinado)
-			throws NfeException {
-		try {
+    static TRetInutNFe inutiliza(ConfiguracoesNfe config, DocumentoEnum tipoDocumento, boolean validar, String xmlAssinado)
+            throws NfeException {
+        try {
 
             log.info("[XML-ENVIO]: " + xmlAssinado);
 
@@ -48,21 +48,21 @@ public class InutilizarA3 {
             log.info("[XML-RETORNO]: " + result.getExtraElement().toString());
             return XmlNfeUtil.xmlToObject(result.getExtraElement().toString(), TRetInutNFe.class);
 
-		} catch (RemoteException | XMLStreamException | JAXBException e) {
-			throw new NfeException(e.getMessage());
-		}
+        } catch (RemoteException | XMLStreamException | JAXBException e) {
+            throw new NfeException(e.getMessage());
+        }
 
-	}
+    }
 
-	static String montaXmlInutlizacao(ConfiguracoesNfe config, TInutNFe inutNFe)
-			throws NfeException {
-		try {
+    static String montaXmlInutlizacao(ConfiguracoesNfe config, TInutNFe inutNFe)
+            throws NfeException {
+        try {
 
             String xml = XmlNfeUtil.objectToXml(inutNFe, config.getEncode());
             return xml.replaceAll(" xmlns:ns2=\"http://www.w3.org/2000/09/xmldsig#\"", "");
 
-		} catch (JAXBException e) {
-			throw new NfeException(e.getMessage());
-		}
-	}
+        } catch (JAXBException e) {
+            throw new NfeException(e.getMessage());
+        }
+    }
 }

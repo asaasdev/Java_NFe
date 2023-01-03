@@ -11,16 +11,16 @@ import javax.xml.bind.JAXBException;
 
 public class CancelarA3 {
 
-	static TRetEnvEvento eventoCancelamento(ConfiguracoesNfe config, boolean valida, DocumentoEnum tipoDocumento, String xmlAssinado)
-			throws NfeException {
-		try {
-			String xmlRetorno = EventosA3.enviarEvento(config, xmlAssinado, ServicosEnum.CANCELAMENTO, valida, tipoDocumento);
-			return XmlNfeUtil.xmlToObject(xmlRetorno, TRetEnvEvento.class);
+    static TRetEnvEvento eventoCancelamento(ConfiguracoesNfe config, boolean valida, DocumentoEnum tipoDocumento, String xmlAssinado)
+            throws NfeException {
+        try {
+            String xmlRetorno = EventosA3.enviarEvento(config, xmlAssinado, ServicosEnum.CANCELAMENTO, valida, tipoDocumento);
+            return XmlNfeUtil.xmlToObject(xmlRetorno, TRetEnvEvento.class);
 
-		} catch (JAXBException e) {
-			throw new NfeException(e.getMessage());
-		}
-	}
+        } catch (JAXBException e) {
+            throw new NfeException(e.getMessage());
+        }
+    }
 
     static  br.com.swconsultoria.nfe.schema.envEventoCancSubst.TRetEnvEvento eventoCancelamentoSubstituicao(ConfiguracoesNfe config, boolean valida, DocumentoEnum tipoDocumento, String xmlAssinado)
             throws NfeException {
@@ -33,20 +33,20 @@ public class CancelarA3 {
         }
     }
 
-	static String montaXmleventoCancelamento(ConfiguracoesNfe config, TEnvEvento enviEvento)
-			throws NfeException {
-		try {
+    static String montaXmleventoCancelamento(ConfiguracoesNfe config, TEnvEvento enviEvento)
+            throws NfeException {
+        try {
             String xml = XmlNfeUtil.objectToXml(enviEvento, config.getEncode());
 
             xml = xml.replaceAll(" xmlns:ns2=\"http://www.w3.org/2000/09/xmldsig#\"", "");
             xml = xml.replaceAll("<evento v", "<evento xmlns=\"http://www.portalfiscal.inf.br/nfe\" v");
 
-			return xml;
+            return xml;
 
-		} catch (JAXBException e) {
-			throw new NfeException(e.getMessage());
-		}
-	}
+        } catch (JAXBException e) {
+            throw new NfeException(e.getMessage());
+        }
+    }
 
     static String montaXmleventoCancelamentoSubstituicao(ConfiguracoesNfe config, br.com.swconsultoria.nfe.schema.envEventoCancSubst.TEnvEvento enviEvento)
             throws NfeException {

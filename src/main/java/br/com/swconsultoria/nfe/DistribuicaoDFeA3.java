@@ -23,9 +23,9 @@ import br.com.swconsultoria.nfe.wsdl.NFeDistribuicaoDFe.NFeDistribuicaoDFeStub;
 
 @Log
 public class DistribuicaoDFeA3 {
-	
-	static RetDistDFeInt consultaNfe(ConfiguracoesNfe config, String xmlAssinado) throws NfeException {
-		try {
+
+    static RetDistDFeInt consultaNfe(ConfiguracoesNfe config, String xmlAssinado) throws NfeException {
+        try {
             log.info("[XML-ENVIO]: " + xmlAssinado);
 
             OMElement ome = AXIOMUtil.stringToOM(xmlAssinado);
@@ -51,13 +51,13 @@ public class DistribuicaoDFeA3 {
             return XmlNfeUtil.xmlToObject(result.getNfeDistDFeInteresseResult().getExtraElement().toString(),
                     RetDistDFeInt.class);
 
-		} catch (RemoteException | XMLStreamException | JAXBException e) {
-			throw new NfeException(e.getMessage());
-		}
+        } catch (RemoteException | XMLStreamException | JAXBException e) {
+            throw new NfeException(e.getMessage());
+        }
 
-	}
-	
-	static String montarXML(ConfiguracoesNfe config, PessoaEnum tipoPessoa, String cpfCnpj, ConsultaDFeEnum tipoConsulta,
+    }
+
+    static String montarXML(ConfiguracoesNfe config, PessoaEnum tipoPessoa, String cpfCnpj, ConsultaDFeEnum tipoConsulta,
             String nsuChave) throws JAXBException, NfeException {
         DistDFeInt distDFeInt = new DistDFeInt();
         distDFeInt.setVersao(ConstantesUtil.VERSAO.DIST_DFE);
@@ -90,6 +90,6 @@ public class DistribuicaoDFeA3 {
 
         return XmlNfeUtil.objectToXml(distDFeInt, config.getEncode());
 
-	}
-	
+    }
+
 }

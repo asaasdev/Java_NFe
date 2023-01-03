@@ -11,32 +11,32 @@ import javax.xml.bind.JAXBException;
 
 public class CartaCorrecaoA3 {
 
-	static TRetEnvEvento eventoCCe(ConfiguracoesNfe config, boolean valida, String xmlAssinado)
-			throws NfeException {
-		try {
-			String xmlRetorno = EventosA3.enviarEvento(config, xmlAssinado, ServicosEnum.CCE, valida, DocumentoEnum.NFE);
+    static TRetEnvEvento eventoCCe(ConfiguracoesNfe config, boolean valida, String xmlAssinado)
+            throws NfeException {
+        try {
+            String xmlRetorno = EventosA3.enviarEvento(config, xmlAssinado, ServicosEnum.CCE, valida, DocumentoEnum.NFE);
 
-			return XmlNfeUtil.xmlToObject(xmlRetorno, TRetEnvEvento.class);
+            return XmlNfeUtil.xmlToObject(xmlRetorno, TRetEnvEvento.class);
 
-		} catch (JAXBException e) {
-			throw new NfeException(e.getMessage());
-		}
+        } catch (JAXBException e) {
+            throw new NfeException(e.getMessage());
+        }
 
-	}
-	
-	static String montaXmlCartaCorrecao(ConfiguracoesNfe config, TEnvEvento enviEvento)
-			throws NfeException {
-		try {
+    }
+
+    static String montaXmlCartaCorrecao(ConfiguracoesNfe config, TEnvEvento enviEvento)
+            throws NfeException {
+        try {
             String xml = XmlNfeUtil.objectToXml(enviEvento, config.getEncode());
 
             xml = xml.replaceAll(" xmlns:ns2=\"http://www.w3.org/2000/09/xmldsig#\"", "");
             xml = xml.replaceAll("<evento v", "<evento xmlns=\"http://www.portalfiscal.inf.br/nfe\" v");
 
-			return xml;
+            return xml;
 
-		} catch (JAXBException e) {
-			throw new NfeException(e.getMessage());
-		}
+        } catch (JAXBException e) {
+            throw new NfeException(e.getMessage());
+        }
 
-	}
+    }
 }
