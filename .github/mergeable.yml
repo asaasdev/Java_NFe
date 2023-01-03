@@ -1,0 +1,61 @@
+version: 2
+mergeable:
+  - when: pull_request.*
+    validate:
+      - do: label
+        must_exclude:
+          regex: 'não fazer merge'
+    pass:
+      - do: checks
+        status: 'success'
+    fail:
+      - do: checks
+        status: 'failure'
+
+  - when: pull_request.opened, pull_request.edited
+    validate:
+      - do: baseRef
+        must_exclude:
+          regex: "master|release"
+      - do: description
+        must_exclude:
+          regex: "https://github.com/asaasdev/asaas/pull/|#[0-9]"
+    pass:
+      - do: comment
+        payload:
+          body: Adicione um link para o PR Predecessora na descrição do PR
+
+  - when: pull_request.opened, pull_request.edited
+    validate:
+      - do: baseRef
+        must_include:
+          regex: "master|release"
+    pass:
+      - do: labels
+        delete: "aguardando outro PR"
+    fail:
+      - do: labels
+        add: "aguardando outro PR"
+
+  - when: pull_request.opened, pull_request.edited, pull_request.labeled
+    validate:
+      - do: label
+        must_include:
+          regex: "hotfix"
+      - do: baseRef
+        must_exclude:
+          regex: "master"
+    pass:
+      - do: comment
+        payload:
+          body: Um hotfix deve conter a label 'hotfix' e ter como destino a 'master' - Saiba mais em nosso [livro de elite](https://github.com/asaasdev/livro-de-elite/blob/master/processes/asaas.md#liberacao-hotfix).
+
+  - when: pull_request.labeled
+    validate:
+      - do: label
+        must_include:
+          regex: 'não fazer merge'
+    pass:
+      - do: comment
+        payload:
+          body: Deixe um comentário explicando o que está impedindo o merge da PR.

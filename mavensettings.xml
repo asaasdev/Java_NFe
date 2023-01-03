@@ -12,7 +12,7 @@
 	at | getting the most out of your Maven installation. Where appropriate, the default | values (values used when the setting is not specified) are provided. | | -->
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 	<!-- localRepository | The path to the local repository maven will use to store artifacts. | | Default: ${user.home}/.m2/repository <localRepository>/path/to/local/repo</localRepository> -->
-	<localRepository>/home/hugo/desenvolvimento/repo-spring</localRepository>
+	<localRepository></localRepository>
 	<!-- interactiveMode | This will determine whether maven prompts you when it needs input. If set to false, | maven will use a sensible default value, perhaps based on some 
 		other setting, for | the parameter in question. | | Default: true <interactiveMode>true</interactiveMode> -->
 
@@ -38,14 +38,10 @@
 		<server>
 			<!-- usuário para download de artefatos -->
 			<id>down.nexus.baseerp.com.br</id>
-			<username>admin</username>
-			<password>@Base@2018</password>
 		</server>
 		<server>
 			<!-- usuário para upload de artefatos -->
 			<id>up.nexus.baseerp.com.br</id>
-			<username>admin</username>
-			<password>@Base@2018</password>
 		</server>
 
 		<!-- server | Specifies the authentication information to use when connecting to a particular server, identified by | a unique name within the system (referred to by the 'id' 

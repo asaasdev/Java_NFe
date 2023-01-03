@@ -1,0 +1,26 @@
+name: checkstyle
+
+on:
+  pull_request:
+    branches:
+      - master
+      - release
+    paths:
+      - '**.java'
+  workflow_dispatch:
+
+jobs:
+  checkstyle:
+    name: checkstyle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Run checkstyle
+        uses: asaasdev/checkstyle-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          configuration_file: 'erp-checkstyle.xml'
