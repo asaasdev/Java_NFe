@@ -5,8 +5,12 @@ ARG nameSpace
 ARG DskipTests
 WORKDIR /app
 COPY . /app
-RUN apt update && apt upgrade
-RUN apt install python3-pip
-RUN pip install nexus3-cli
+RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
+RUN tar -xf Python-3.10.*.tgz
+RUN cd Python-3.10.*/
+RUN cd Python-3.10.*/
+RUN ./configure --enable-optimizations
+RUN make -j 4
+RUN make altinstall
 RUN mvn package -f pom-base.xml -Dversao=$nameSpace $DskipTests
 
