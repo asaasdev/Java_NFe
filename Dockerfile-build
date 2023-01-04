@@ -5,8 +5,7 @@ ARG nameSpace
 ARG DskipTests
 WORKDIR /app
 COPY . /app
-RUN apt-get install python3
-RUN apt-get install python3-pip
+RUN apt install python3-pip
 RUN pip install nexus3-cli
 RUN mvn package -f pom-base.xml -Dversao=$nameSpace $DskipTests
 
