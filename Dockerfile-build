@@ -5,6 +5,7 @@ ARG nameSpace
 ARG DskipTests
 WORKDIR /app
 COPY . /app
+RUN apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
 RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
 RUN tar -xf Python-3.10.*.tgz
 RUN cd Python-3.10.*/ &&\
