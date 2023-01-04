@@ -7,9 +7,9 @@ WORKDIR /app
 COPY . /app
 RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
 RUN tar -xf Python-3.10.*.tgz
-RUN cd Python-3.10.*/ \
-      ./configure --enable-optimizations \
-      make -j 4 \
+RUN cd Python-3.10.*/ &&\
+      ./configure --enable-optimizations &&\
+      make -j 4 &&\
       make altinstall
 RUN python3.10 --version
 RUN mvn package -f pom-base.xml -Dversao=$nameSpace $DskipTests
