@@ -10,7 +10,7 @@ RUN tar -xf Python-3.10.*.tgz
 RUN cd Python-3.10.*/ \
       ./configure --enable-optimizations \
       make -j 4 \
-      make altinstall \
+      make altinstall
 RUN python3.10 --version
 RUN mvn package -f pom-base.xml -Dversao=$nameSpace $DskipTests
 
