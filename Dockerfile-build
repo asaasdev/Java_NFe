@@ -6,5 +6,5 @@ ARG DskipTests
 WORKDIR /app
 COPY . /app
 
-RUN mvn package -s -f pom-base.xml -Dversao=$nameSpace $DskipTests
+RUN mvn package -f pom-base.xml -Dversao=$nameSpace $DskipTests
 
