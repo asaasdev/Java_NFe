@@ -31,7 +31,7 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <distributionManagement>
+  <!--  <distributionManagement>
         <snapshotRepository>
             <id>sonatype-nexus</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -39,6 +39,14 @@
         <repository>
             <id>sonatype-nexus</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement> -->
+    <!-- Environment Settings -->
+    <distributionManagement>
+        <repository>
+            <id>up.nexus.baseerp.com.br</id>
+            <name>up.nexus.baseerp.com.br</name>
+            <url>https://nexuskube.baseerp.com.br/repository/baseerp.release/</url>
         </repository>
     </distributionManagement>
 

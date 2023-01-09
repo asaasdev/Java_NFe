@@ -38,10 +38,14 @@
 		<server>
 			<!-- usuário para download de artefatos -->
 			<id>down.nexus.baseerp.com.br</id>
+            <username>${user}</username>
+            <password>${password}</password>
 		</server>
 		<server>
 			<!-- usuário para upload de artefatos -->
 			<id>up.nexus.baseerp.com.br</id>
+            <username>${user}</username>
+            <password>${password}</password>
 		</server>
 
 		<!-- server | Specifies the authentication information to use when connecting to a particular server, identified by | a unique name within the system (referred to by the 'id' 
