@@ -67,12 +67,12 @@
 		<mirror>
 			<id>down.nexus.baseerp.com.br</id>
 			<mirrorOf>*</mirrorOf>
-			<url>https://nexuskube.baseerp.com.br/repository/maven-public/</url>
+			<url>https://nexus.baseerp.com.br/repository/maven-public/</url>
 		</mirror>
 		<mirror>
 			<id>up.nexus.baseerp.com.br</id>
 			<mirrorOf>*</mirrorOf>
-			<url>https://nexuskube.baseerp.com.br/</url>
+			<url>https://nexus.baseerp.com.br/</url>
 		</mirror>
 	</mirrors>
 
@@ -133,7 +133,7 @@
 			<repositories>
 				<repository>
 					<id>down.nexus.baseerp.com.br</id>
-					<url>https://nexuskube.baseerp.com.br</url>
+					<url>https://nexus.baseerp.com.br</url>
 					<releases>
 						<enabled>true</enabled>
 					</releases>
@@ -148,7 +148,7 @@
 			<repositories>
 				<repository>
 					<id>up.nexus.baseerp.com.br</id>
-					<url>https://nexuskube.baseerp.com.br</url>
+					<url>https://nexus.baseerp.com.br</url>
 					<releases>
 						<enabled>true</enabled>
 					</releases>
