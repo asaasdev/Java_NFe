@@ -7,8 +7,21 @@ podTemplate(
                         args: 'cat',
                         command: '/bin/sh -c',
                         image: 'baseerp/docker:1.4',
-                        name: 'docker-container')
+                        livenessProbe: containerLivenessProbe(execArgs: '',
+                                failureThreshold: 0,
+                                initialDelaySeconds: 0,
+                                periodSeconds: 0,
+                                successThreshold: 0,
+                                timeoutSeconds: 0),
+                        name: 'docker-container',
+                        resourceLimitCpu: '',
+                        resourceLimitMemory: '',
+                        resourceRequestCpu: '',
+                        resourceRequestMemory: '',
+                        ttyEnabled: true,
+                        workingDir: '/home/jenkins/agent')
                 ],
+        volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         nodeSelector: 'type=jenkins-worker',
 )
         {
