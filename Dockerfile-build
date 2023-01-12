@@ -1,0 +1,12 @@
+ARG mavenImage
+ARG mavenImageVersion
+FROM ${mavenImage}:${mavenImageVersion} as builder
+ARG nameSpace
+ARG DskipTests
+ARG nexusUser
+ARG nexusPass
+
+WORKDIR /app
+COPY . /app
+RUN mvn deploy -f pom-base.xml -s mavensettings.xml -Duser=$nexusUser -Dpassword=$nexusPass -Dversao=$nameSpace $DskipTests
+
