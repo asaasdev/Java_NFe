@@ -26,8 +26,23 @@ A comunidade java_nfe tambem mantem o projeto Java_certificado.
   
 ![image](https://github.com/asaasdev/Java_NFe/assets/81778352/e2a55a57-0afe-473a-b055-7848d2027b3f)
 
-- Após a aprovação/merge do branch de desenvolvimento deve-se fazer o merge da branc "relase" para "master_base"
+- Após a aprovação/merge do branch de desenvolvimento deve-se fazer o merge da branch "relase" para "master_base"
 
+
+### Build dos projetos no Jenkins:
+
+Os projetos java_nfe e java_certificado são deployados no nexus e depois referencia no pom do projeto ex. java.api e Jsf
+Foram criados verões do pom de acordo com o abiente para podemos testar:
+
+local, sandbox, staging e prod
+
+![image](https://github.com/asaasdev/Java_NFe/assets/81778352/250a81ef-b9ba-4e56-a14e-50c32c75119a)
+
+
+Após feito o merge da branch "release" para o "master_base", precisamos fazer o build no jenkins do java_nfe/java_certificado antes do deploy do serviços que utilizam esses jar.
+
+
+![image](https://github.com/asaasdev/Java_NFe/assets/81778352/8c0d3eee-efeb-41d3-954f-b5de3343936d)
 
 
 
