@@ -1,22 +1,33 @@
-1-Fazer o sinc fork com o projeto da comunidade java_nfe, sempre selecionar o branch master e clicar em sinc fork
+# Sincronização dos projetos Java_nfe e Java_certificado
+
+Para envio das NFe/NFCe utilizamos na camada de comunição o projeto mantido pela comunidade chamado Java_nfe. 
+
+A comunidade java_nfe tambem mantem o projeto Java_certificado.
+
+### Como sincronizar os projetos com a comunidade:
+
+- Selecionar o branch master e fazer o sinc fork com o projeto da comunidade java_nfe ou java_certificado
 
 ![image](https://github.com/asaasdev/Java_NFe/assets/81778352/90ffb830-2fda-4201-8845-f08351f16495)
 
-2-Criar um branch a partir do branch release
+- Criar um branch de desenvolvimento à partir do branch release.
 
-3-Fazer o merge da branch criadA com a master(comunidade)
+- Baixar o branch na maquina de desenvolvimento e fazer o merge com a branch master(comunidade)
 
-4-Fazer as alterações necessários para implementar as novas regras ou em caso de quebra de código.
+- Fazer os ajustes necessários para implementar as novas regras e verificar se as novas implementações da comunidade não quebraram algum método customizado para emissão com certificado A3.
 
-5-Igualar a versão do arquivo pom-base.xml com o pom.xml que é gerenciado pela comunidade.
-
-  -Verificar se alguma alteração no pom.xml afeta ao pom-base.xml, somente verificar somente inserção/Alterção das dependencias
-  
-  -Precisamos manter esse pom-base customizado para fazemos a publicação do jar no nexus.
+- Ajustar a versão no pom-base.xml deixando sempre igual ao pom.xml que é gerenciado pela comunidade.
 
 ![image](https://github.com/asaasdev/Java_NFe/assets/81778352/1b63365c-0dda-4a31-8a88-359030036bfc)
 
-5-Abrir um Pull Request para o branch release
+- Verificar se alguma alteração no pom.xml que precise ser mergedada ao pom-base.xml(inserção/Alterção das dependencias)
+  
+- Abrir um Pull Request para o branch release
+  
+![image](https://github.com/asaasdev/Java_NFe/assets/81778352/e2a55a57-0afe-473a-b055-7848d2027b3f)
 
-Para fazer o merge para produção deve-se ser entre a branch release e master_base
+- Após a aprovação/merge do branch de desenvolvimento deve-se fazer o merge da branc "relase" para "master_base"
+
+
+
 
