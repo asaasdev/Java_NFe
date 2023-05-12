@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.swconsultoria</groupId>
     <artifactId>java-nfe</artifactId>
-    <version>4.00.24b-${versao}-SNAPSHOT</version>
+    <version>4.00.24-${versao}-SNAPSHOT</version>
     <name>Java_NFe</name>
     <description>Api java para consumo do webService de nota fiscal eletronica</description>
     <url>https://github.com/Samuel-Oliveira/Java_NFe</url>
@@ -148,23 +148,6 @@
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-xjc</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0.1</version>
-        </dependency>
-
 
     </dependencies>
 
