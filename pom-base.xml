@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.swconsultoria</groupId>
     <artifactId>java-nfe</artifactId>
-    <version>4.00.18-${versao}-SNAPSHOT</version>
+    <version>4.00.24-${versao}-SNAPSHOT</version>
     <name>Java_NFe</name>
     <description>Api java para consumo do webService de nota fiscal eletronica</description>
     <url>https://github.com/Samuel-Oliveira/Java_NFe</url>
@@ -53,7 +53,7 @@
         <dependency>
             <groupId>br.com.swconsultoria</groupId>
             <artifactId>java_certificado</artifactId>
-            <version>2.8-${versao}-SNAPSHOT</version>
+            <version>2.11-${versao}-SNAPSHOT</version>
         </dependency>
         <!-- Ini4J -->
         <dependency>
