@@ -34,9 +34,9 @@
     <!-- Environment Settings -->
     <distributionManagement>
         <repository>
-            <id>up.nexus.baseerp.com.br</id>
-            <name>up.nexus.baseerp.com.br</name>
-            <url>https://nexus.baseerp.com.br/repository/baseerp.snapshot/</url>
+            <id>up.nexus.prod.baseerp.com.br</id>
+            <name>up.nexus.prod.baseerp.com.br</name>
+            <url>https://nexus.prod.baseerp.com.br/repository/baseerp.snapshot/</url>
         </repository>
     </distributionManagement>
 
