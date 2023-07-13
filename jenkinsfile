@@ -64,7 +64,7 @@ podTemplate(
                                 def mavenImage = "docker.io/baseerp/maven-services"
                                 def mavenImageVersion = "1.9"
                                 sh label: '', script: "buildah login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD} docker.io"
-                                sh label: '', script: "buildah build -f Dockerfile-build -t ${imagem_build}:${versao} . --build-arg mavenImage=${mavenImage} --build-arg mavenImageVersion=${mavenImageVersion} --build-arg nameSpace=${namespace} --build-arg DskipTests=${DskipTests} --build-arg nexusUser=${NEXUS_USER} --build-arg nexusPass=${NEXUS_PASSWORD}"
+                                sh label: '', script: "buildah build -f Dockerfile-build -t ${imagem_build}:${versao} --build-arg mavenImage=${mavenImage} --build-arg mavenImageVersion=${mavenImageVersion} --build-arg nameSpace=${namespace} --build-arg DskipTests=${DskipTests} --build-arg nexusUser=${NEXUS_USER} --build-arg nexusPass=${NEXUS_PASSWORD}"
                             }
                         }
                     }
