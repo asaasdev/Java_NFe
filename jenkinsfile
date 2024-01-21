@@ -2,30 +2,32 @@ podTemplate(
         name: 'build-services',
         namespace: 'jenkins ',
         label: 'build-services',
-        containers:
-                [containerTemplate(
-                        args: 'cat',
-                        command: '/bin/sh -c',
-                        image: 'baseerp/docker:1.4',
-                        livenessProbe: containerLivenessProbe(execArgs: '',
-                                failureThreshold: 0,
-                                initialDelaySeconds: 0,
-                                periodSeconds: 0,
-                                successThreshold: 0,
-                                timeoutSeconds: 0),
-                        name: 'docker-container',
-                        resourceLimitCpu: '',
-                        resourceLimitMemory: '',
-                        resourceRequestCpu: '',
-                        resourceRequestMemory: '',
-                        ttyEnabled: true,
-                        workingDir: '/home/jenkins/agent')
-                ],
-        volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         nodeSelector: 'type=jenkins-worker',
-)
-        {
-            node('build-services') {
+        yaml: '''
+    apiVersion: v1
+    kind: Pod
+    spec:
+      containers:
+          - name: docker-container
+            image: baseerp/docker:1.9
+            securityContext:
+              privileged: true
+            tty: true
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 4000Mi
+                ephemeral-storage: "30Gi"
+              limits:
+                cpu: "2000m"                                    
+                memory: "8000Mi"
+      tolerations:
+        - key: jenkins-worker
+          operator: Equal
+          value: true
+          effect: NoExecute
+''') {
+    node('build-services') {
 
                 echo '*********************************************************Parametros************************************************************************'
                 echo '*******************************************************************************************************************************************'
@@ -59,11 +61,10 @@ podTemplate(
                         echo '*********************************************************Package************************************************************************'
                         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USER')]) {
                             withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USER')]) {
-                                def mavenImage = "baseerp/maven-services"
-                                def mavenImageVersion = "1.3"
-                                sh label: '', script: "docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}"
-                                sh label: '', script: "docker build -f Dockerfile-build -t ${imagem_build}:${versao} . --build-arg mavenImage=${mavenImage} --build-arg mavenImageVersion=${mavenImageVersion} --build-arg nameSpace=${namespace} --build-arg DskipTests=${DskipTests} --build-arg nexusUser=${NEXUS_USER} --build-arg nexusPass=${NEXUS_PASSWORD} --network=host"
-                                sh label: '', script: "docker rmi ${imagem_build}:${versao} --force"
+                                def mavenImage = "docker.io/baseerp/maven-services"
+                                def mavenImageVersion = "1.9"
+                                sh label: '', script: "buildah login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD} docker.io"
+                                sh label: '', script: "buildah build -f Dockerfile-build -t ${imagem_build}:${versao} --build-arg mavenImage=${mavenImage} --build-arg mavenImageVersion=${mavenImageVersion} --build-arg nameSpace=${namespace} --build-arg DskipTests=${DskipTests} --build-arg nexusUser=${NEXUS_USER} --build-arg nexusPass=${NEXUS_PASSWORD}"
                             }
                         }
                     }

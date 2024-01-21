@@ -37,13 +37,13 @@
 	<servers>
 		<server>
 			<!-- usuário para download de artefatos -->
-			<id>down.nexus.baseerp.com.br</id>
+			<id>down.nexus.prod.baseerp.com.br</id>
             <username>${user}</username>
             <password>${password}</password>
 		</server>
 		<server>
 			<!-- usuário para upload de artefatos -->
-			<id>up.nexus.baseerp.com.br</id>
+			<id>up.nexus.prod.baseerp.com.br</id>
             <username>${user}</username>
             <password>${password}</password>
 		</server>
@@ -65,14 +65,14 @@
 			of this mirror. IDs are used | for inheritance and direct lookup purposes, and must be unique across the set of mirrors. | <mirror> <id>mirrorId</id> <mirrorOf>repositoryId</mirrorOf> 
 			<name>Human Readable Name for this Mirror.</name> <url>http://my.repository.com/repo/path</url> </mirror> -->
 		<mirror>
-			<id>down.nexus.baseerp.com.br</id>
+			<id>down.nexus.prod.baseerp.com.br</id>
 			<mirrorOf>*</mirrorOf>
-			<url>https://nexus.baseerp.com.br/repository/maven-public/</url>
+			<url>https://nexus.prod.baseerp.com.br/repository/maven-public/</url>
 		</mirror>
 		<mirror>
-			<id>up.nexus.baseerp.com.br</id>
+			<id>up.nexus.prod.baseerp.com.br</id>
 			<mirrorOf>*</mirrorOf>
-			<url>https://nexus.baseerp.com.br/</url>
+			<url>https://nexus.prod.baseerp.com.br/</url>
 		</mirror>
 	</mirrors>
 
@@ -129,11 +129,11 @@
 			</pluginRepositories>
 		</profile>
 		<profile>
-			<id>down.nexus.baseerp.com.br</id>
+			<id>down.nexus.prod.baseerp.com.br</id>
 			<repositories>
 				<repository>
-					<id>down.nexus.baseerp.com.br</id>
-					<url>https://nexus.baseerp.com.br</url>
+					<id>down.nexus.prod.baseerp.com.br</id>
+					<url>https://nexus.prod.baseerp.com.br</url>
 					<releases>
 						<enabled>true</enabled>
 					</releases>
@@ -144,11 +144,11 @@
 			</repositories>
 		</profile>
 		<profile>
-			<id>up.nexus.baseerp.com.br</id>
+			<id>up.nexus.prod.baseerp.com.br</id>
 			<repositories>
 				<repository>
-					<id>up.nexus.baseerp.com.br</id>
-					<url>https://nexus.baseerp.com.br</url>
+					<id>up.nexus.prod.baseerp.com.br</id>
+					<url>https://nexus.prod.baseerp.com.br</url>
 					<releases>
 						<enabled>true</enabled>
 					</releases>
@@ -163,7 +163,7 @@
 
 	<activeProfiles>
 		<!--make the profile active all the time -->
-		<activeProfile>down.nexus.baseerp.com.br</activeProfile>
+		<activeProfile>down.nexus.prod.baseerp.com.br</activeProfile>
 	</activeProfiles>
 
 	<!-- activeProfiles | List of profiles that are active for all builds. | <activeProfiles> <activeProfile>alwaysActiveProfile</activeProfile> <activeProfile>anotherAlwaysActiveProfile</activeProfile> 
