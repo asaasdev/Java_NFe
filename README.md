@@ -1,4 +1,4 @@
-# Java-NFe [![Build Status](https://travis-ci.org/Samuel-Oliveira/Java_NFe.svg?branch=master)](https://travis-ci.org/Samuel-Oliveira/Java_NFe) [![MIT License](https://img.shields.io/github/license/Samuel-Oliveira/Java_NFe.svg) ](https://github.com/Samuel-Oliveira/Java_NFe/blob/master/LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/br.com.swconsultoria/java-nfe.svg?label=Maven%20Central)](https://search.maven.org/artifact/br.com.swconsultoria/java-nfe/4.00.18/jar) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/Samuel-Oliveira/Java_NFe.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Samuel-Oliveira/Java_NFe/context:java) [![Total alerts](https://img.shields.io/lgtm/alerts/g/Samuel-Oliveira/Java_NFe.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Samuel-Oliveira/Java_NFe/alerts/)
+# Java-NFe [![MIT License](https://img.shields.io/github/license/Samuel-Oliveira/Java_NFe.svg) ](https://github.com/Samuel-Oliveira/Java_NFe/blob/master/LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/br.com.swconsultoria/java-nfe.svg?label=Maven%20Central)](https://search.maven.org/artifact/br.com.swconsultoria/java-nfe/4.00.24/jar)
 Biblioteca Java para consumo do WebService de NFe/NFCe
 
 ## Dúvidas, Sugestões ou Consultoria
@@ -7,16 +7,17 @@ Biblioteca Java para consumo do WebService de NFe/NFCe
 ## Gostou do Projeto? Dê sua colaboração pelo Pix: 01713390108 <img src="https://swconsultoria.com.br/pix.png" width="200">
 
 Para Iniciar : 
-- Caso use Libs baixe o java-nfe-4.00.18.jar (https://github.com/Samuel-Oliveira/Java_NFe/raw/master/java-nfe-4.00.18.jar) e o adicione às bibliotecas de Seu Projeto.
-
 - Baixe o Schemas.rar (https://github.com/Samuel-Oliveira/Java_NFe/raw/master/schemas.zip) e extraia na sua Máquina.
+
+- External Jar: Baixe e adicione às bibliotecas de seu Projeto.
+  - https://github.com/Samuel-Oliveira/Java_NFe/releases
 
 - Maven :
 ```xml
 <dependency>
     <groupId>br.com.swconsultoria</groupId>
     <artifactId>java-nfe</artifactId>
-    <version>4.00.18</version>
+    <version>4.00.24</version>
 </dependency>
 ```
 
@@ -28,7 +29,7 @@ repositories {
     }
 }
 dependencies {
-    implementation "br.com.swconsultoria:java-nfe:4.00.18"
+    implementation "br.com.swconsultoria:java-nfe:4.00.24"
 }
 ```
 
@@ -38,62 +39,33 @@ ________________________________________________________________________________
 
 # Historico de Versões
 
-[//]: # (## v4.00.19A - SNAPSHOT - 21/04/2022 - Schemas PL.009i)
+## v4.00.24 - 05/05/2023 - Schemas PL.009k
+- Atualizado Java Certificado (Ver https://github.com/Samuel-Oliveira/Java_Certificado)
+- Atualizado Cacert (Sefaz Minas)
+- Adicionado ZoneId direto a configuracao e removido da Chamada dos metodos. O padrao de ZoneId é America/Sao_Paulo
 
-[//]: # (- Atualizado Cacert)
+## v4.00.23 - 25/04/2023 - Schemas PL.009k
+- Atualizado Objeto e XSD NT 2023.001 1.20
+- Adicionado Validacao XML Manual
 
-[//]: # (- Alteração WebService CE)
+## v4.00.22 - 22/03/2023 - Schemas PL.009k
+- Correções Build Maven
 
-[//]: # (- Adicionado System.getProperty&#40;"file.separator"&#41; como separado de arquivos)
+## v4.00.21 - 19/03/2023 - Schemas PL.009k
+- Adicionado log para utilização de Webservice INI Customizado
+- Atualizado Schemas para PL.009k
+- Implementado NT 2022.003
+- Implementado NT 2023.001
+- Melhorias Git-Actions
 
-[//]: # (- Implementado NT 2021.004 1.20)
+## v4.00.20 - 07/03/2023 - Schemas PL.009i
+- Correção URL MG
 
-[//]: # (- Corrigido Consulta Cadastro MS)
+## v4.00.19 - 22/01/2023 - Schemas PL.009i
+- Atualizado Cacert
+- Atualizado Lib Certificado
+- Correção de URL QrCode NFCe MG Homologação 
 
-[//]: # (- Alterado URL QrCode NFCe MG)
-
-[//]: # (- Atualizado Servidor DFe Homologação)
-
-[//]: # (- Adicionado Compatibilidade com Java 14+)
-
-[//]: # (- Adicionado Evento Ator Interessado)
-
-[//]: # (- Corrigido erro de Logs)
-
-[//]: # (- Adicionado Melhorias JaxB)
-
-[//]: # ()
-[//]: # (Snapshot é a versão que se encontra em teste, só use em caso de extrema necessidade.)
-
-[//]: # (Para usar, adicione o repositorio de Snapshot ao Maven:)
-
-[//]: # (```)
-
-[//]: # (<repositories>)
-
-[//]: # (    <repository>)
-
-[//]: # (        <id>sonatype-nexus-snapshots</id>)
-
-[//]: # (        <url>https://oss.sonatype.org/content/repositories/snapshots</url>)
-
-[//]: # (    </repository>)
-
-[//]: # (</repositories>)
-
-[//]: # (<dependency>)
-
-[//]: # (    <groupId>br.com.swconsultoria</groupId>)
-
-[//]: # (    <artifactId>java-nfe</artifactId>)
-
-[//]: # (    <version>4.00.19-SNAPSHOT</version>)
-
-[//]: # (</dependency>)
-
-[//]: # (```)
-
-[//]: # (Ou baixe o Jar aqui: https://github.com/Samuel-Oliveira/Java_NFe/raw/master/java-nfe-4.00.19-SNAPSHOT.jar)
 
 ## v4.00.18 - 13/05/2022 - Schemas PL.009i
 - Atualizado Cacert

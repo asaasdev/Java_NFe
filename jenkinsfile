@@ -1,0 +1,74 @@
+podTemplate(
+        name: 'build-services',
+        namespace: 'jenkins ',
+        label: 'build-services',
+        nodeSelector: 'type=jenkins-worker',
+        yaml: '''
+    apiVersion: v1
+    kind: Pod
+    spec:
+      containers:
+          - name: docker-container
+            image: baseerp/docker:1.9
+            securityContext:
+              privileged: true
+            tty: true
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 4000Mi
+                ephemeral-storage: "30Gi"
+              limits:
+                cpu: "2000m"                                    
+                memory: "8000Mi"
+      tolerations:
+        - key: jenkins-worker
+          operator: Equal
+          value: true
+          effect: NoExecute
+''') {
+    node('build-services') {
+
+                echo '*********************************************************Parametros************************************************************************'
+                echo '*******************************************************************************************************************************************'
+                echo "Ambiente:  ${Ambiente}"
+                echo "Branch:  ${Branch}"
+                echo '*******************************************************************************************************************************************'
+                echo '*******************************************************************************************************************************************'
+
+                def gitRepos = ""
+                def namespace = "${Ambiente}"
+                def executarTestes = "${Testes}"
+                def imagem_build = "baseerp/services-build"
+                def versao = "1.0.${currentBuild.number}"
+                def git_branch = ""
+                def DskipTests = "-DskipTests"
+                if (executarTestes.toLowerCase().equals("sim")) {
+                    DskipTests = ""
+                }
+
+                stage('Checkout') {
+                    echo '*********************************************************Checkout************************************************************************'
+                    gitRepos = checkout scm
+                    git_branch = gitRepos.GIT_BRANCH
+                    versao = versao + '-' + namespace
+                    echo 'Repositório :' + gitRepos.toString()
+                    echo 'Branch :' + git_branch.toString()
+                }
+
+                stage('Package') {
+                    container('docker-container') {
+                        echo '*********************************************************Package************************************************************************'
+                        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USER')]) {
+                            withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USER')]) {
+                                def mavenImage = "docker.io/baseerp/maven-services"
+                                def mavenImageVersion = "1.9"
+                                sh label: '', script: "buildah login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD} docker.io"
+                                sh label: '', script: "buildah build -f Dockerfile-build -t ${imagem_build}:${versao} --build-arg mavenImage=${mavenImage} --build-arg mavenImageVersion=${mavenImageVersion} --build-arg nameSpace=${namespace} --build-arg DskipTests=${DskipTests} --build-arg nexusUser=${NEXUS_USER} --build-arg nexusPass=${NEXUS_PASSWORD}"
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
