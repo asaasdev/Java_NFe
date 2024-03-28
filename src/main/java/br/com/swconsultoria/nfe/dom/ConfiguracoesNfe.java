@@ -9,14 +9,13 @@ import br.com.swconsultoria.nfe.dom.enuns.AmbienteEnum;
 import br.com.swconsultoria.nfe.dom.enuns.EstadosEnum;
 import br.com.swconsultoria.nfe.util.ConstantesUtil;
 import br.com.swconsultoria.nfe.util.ObjetoUtil;
+import lombok.extern.java.Log;
 
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.ZoneId;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author Samuel Oliveira
@@ -31,6 +30,7 @@ import java.util.logging.Logger;
  * @see ConfiguracoesNfe
  * @see ConfiguracoesWebNfe
  */
+@Log
 public class ConfiguracoesNfe {
 
     private EstadosEnum estado;
@@ -107,16 +107,14 @@ public class ConfiguracoesNfe {
             }
         }
 
-        if (Logger.getLogger("").isLoggable(Level.SEVERE)) {
-            System.err.println("####################################################################");
-            System.err.println("       Api Java Nfe - Versão 4.00.24 - 06/05/2023");
-            if (Logger.getLogger("").isLoggable(Level.WARNING)) {
-                System.err.println(" Samuel Olivera - samuel@swconsultoria.com.br ");
-            }
-            System.err.println(" Pasta Schemas: " + pastaSchemas);
-            System.err.println(" Ambiente: " + (ambiente.equals(AmbienteEnum.PRODUCAO) ? "Produção" : "Homologação") + " - Estado: " + estado.getNome());
-            System.err.println("####################################################################");
-        }
+        log.info(String.format("JAVA-NFE | Samuel Oliveira | samuel@swconsultoria.com.br " +
+                        "| VERSAO=%s | DATA_VERSAO=%s | PASTA_SCHEMAS=%s | AMBIENTE=%s | ESTADO=%s",
+                "4.00.31",
+                "25/03/2024",
+                pastaSchemas,
+                ambiente,
+                estado.getNome().toUpperCase()));
+
         if (!certificado.isValido()) {
             throw new CertificadoException("Certificado Vencido/Inválido");
         }
@@ -199,7 +197,7 @@ public class ConfiguracoesNfe {
     }
 
     /**
-     * Atribui um valor para contigenciaSCAN. Caso True, as operações da NF-e
+     * Atribui um valor para contigenciaSVC. Caso True, as operações da NF-e
      * funcionarão no modo de Contingência. <br>
      * Usar para situações em que não for possível estabelecer conexão com o
      * WebService SEFAZ Origem.
