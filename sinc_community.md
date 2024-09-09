@@ -2,7 +2,9 @@
 
 Para envio das NFe/NFCe utilizamos na camada de comunição o projeto mantido pela comunidade chamado Java_nfe. 
 
-A comunidade java_nfe tambem mantem o projeto Java_certificado.
+A comunidade java_nfe tambem mantém o projeto Java_certificado, que é consumido pelo java_nfe (ver arquivo pom.xml). 
+Para atualizar a versão dos certificados, basta sincronizar o java_nfe com a versão da comunidade, conforme passos 
+descritos a seguir.
 
 ### Como sincronizar os projetos com a comunidade:
 
