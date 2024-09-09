@@ -45,4 +45,10 @@ Após feito o merge da branch "release" para o "master_base", precisamos fazer o
 ![image](https://github.com/asaasdev/Java_NFe/assets/81778352/8c0d3eee-efeb-41d3-954f-b5de3343936d)
 
 
+### Atualização do pacote nos serviços
 
+Deve-se atualizar para a nova versão do java-nfe nos repositórios erp-services e erp-jsf. Os arquivos a alterar são os seguintes:
+- [pom.xml](https://github.com/asaasdev/erp-jsf/blob/master/libs/baseerp.nfe.integracao/pom.xml) do nfe.integracao no repositório erp-jsf ([ver PR exemplo](https://github.com/asaasdev/erp-jsf/pull/1744/files))
+- [pom.xml](https://github.com/asaasdev/erp-services/blob/master/libs/nfe.integracao/pom.xml#L49) do nfe.integracao no repositório erp-services ([ver PR exemplo](https://github.com/asaasdev/erp-services/pull/2779/files))
+
+Após atualização executar o release dos serviços normalmente.
