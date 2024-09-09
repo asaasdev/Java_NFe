@@ -28,6 +28,14 @@ A comunidade java_nfe tambem mantem o projeto Java_certificado.
 
 - Após a aprovação/merge do branch de desenvolvimento deve-se fazer o merge da branch "relase" para "master_base"
 
+### Atualização dos arquivos xsd
+
+Se a nova versão possuir mudanças nos arquivos .xsd, é necessário também atualizar estes arquivos no bucket 
+bucket s3:baseerp/producao/xsd. Os arquivos xsd ficam no repositório Java_NFE no diretório /schemas.
+
+1. Faça uma cópia do diretório atual como backup, e a nomeie indicando o mês/dia em que está sendo feita a 
+   atualização. Isto nos permite efetuar um rollback, se necessário.
+2. Carregue os novos arquivos no bucket s3:baseerp/producao/xsd.
 
 ### Build dos projetos no Jenkins:
 
