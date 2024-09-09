@@ -2,7 +2,9 @@
 
 Para envio das NFe/NFCe utilizamos na camada de comunição o projeto mantido pela comunidade chamado Java_nfe. 
 
-A comunidade java_nfe tambem mantem o projeto Java_certificado.
+A comunidade java_nfe tambem mantém o projeto Java_certificado, que é consumido pelo java_nfe (ver arquivo pom.xml). 
+Para atualizar a versão dos certificados, basta sincronizar o java_nfe com a versão da comunidade, conforme passos 
+descritos a seguir.
 
 ### Como sincronizar os projetos com a comunidade:
 
@@ -28,6 +30,14 @@ A comunidade java_nfe tambem mantem o projeto Java_certificado.
 
 - Após a aprovação/merge do branch de desenvolvimento deve-se fazer o merge da branch "relase" para "master_base"
 
+### Atualização dos arquivos xsd
+
+Se a nova versão possuir mudanças nos arquivos .xsd, é necessário também atualizar estes arquivos no bucket 
+bucket s3:baseerp/producao/xsd. Os arquivos xsd ficam no repositório Java_NFE no diretório /schemas.
+
+1. Faça uma cópia do diretório atual como backup, e a nomeie indicando o mês/dia em que está sendo feita a 
+   atualização. Isto nos permite efetuar um rollback, se necessário.
+2. Carregue os novos arquivos no bucket s3:baseerp/producao/xsd.
 
 ### Build dos projetos no Jenkins:
 
@@ -45,4 +55,10 @@ Após feito o merge da branch "release" para o "master_base", precisamos fazer o
 ![image](https://github.com/asaasdev/Java_NFe/assets/81778352/8c0d3eee-efeb-41d3-954f-b5de3343936d)
 
 
+### Atualização do pacote nos serviços
 
+Deve-se atualizar para a nova versão do java-nfe nos repositórios erp-services e erp-jsf. Os arquivos a alterar são os seguintes:
+- [pom.xml](https://github.com/asaasdev/erp-jsf/blob/master/libs/baseerp.nfe.integracao/pom.xml) do nfe.integracao no repositório erp-jsf ([ver PR exemplo](https://github.com/asaasdev/erp-jsf/pull/1744/files))
+- [pom.xml](https://github.com/asaasdev/erp-services/blob/master/libs/nfe.integracao/pom.xml#L49) do nfe.integracao no repositório erp-services ([ver PR exemplo](https://github.com/asaasdev/erp-services/pull/2779/files))
+
+Após atualização executar o release dos serviços normalmente.
