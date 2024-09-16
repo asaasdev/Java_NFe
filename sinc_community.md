@@ -18,8 +18,7 @@ descritos a seguir.
 
 - Fazer os ajustes necessários para implementar as novas regras e verificar se as novas implementações da comunidade não quebraram algum método customizado para emissão com certificado A3.
 
-- Ajustar a versão no pom-base.xml deixando sempre igual ao pom.xml que é gerenciado pela comunidade. **Verifique 
-  sempre a versão da dependếncia java_certificado**, ela deve sempre ser a mesma do pom.xml para que a emissão de nota funcione adequadamente. Veja o problema [Erro "Connection or outbound has closed" ao transmitir NFe](https://asaasdev.atlassian.net/wiki/spaces/PROD/pages/3605561606/Erro+Connection+or+outbound+has+closed+ao+transmitir+NFe) para entender os impactos de quando esta dependência fica desatualizada.
+- Ajustar a versão no pom-base.xml deixando sempre igual ao pom.xml que é gerenciado pela comunidade. **Verifique sempre a versão da dependếncia java_certificado**, ela deve sempre ser a mesma do pom.xml para que a emissão de nota funcione adequadamente. Veja o problema [Erro "Connection or outbound has closed" ao transmitir NFe](https://asaasdev.atlassian.net/wiki/spaces/PROD/pages/3605561606/Erro+Connection+or+outbound+has+closed+ao+transmitir+NFe) para entender os impactos de quando esta dependência fica desatualizada.
 
 ![image](https://github.com/asaasdev/Java_NFe/assets/81778352/1b63365c-0dda-4a31-8a88-359030036bfc)
 
