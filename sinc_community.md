@@ -32,7 +32,7 @@ descritos a seguir.
 
 ### Atualização dos arquivos xsd
 
-Se a nova versão possuir mudanças nos arquivos .xsd, é necessário também atualizar estes arquivos no bucket bucket s3:baseerp/producao/xsd. 
+Se a nova versão possuir mudanças nos arquivos .xsd, é necessário também atualizar estes arquivos no bucket s3:baseerp/producao/xsd. 
 
 1. Os arquivos xsd ficam no repositório Java_NFE no arquivo /schemas.zip. Verifique se os arquivos estão atualizados e possuem as modificações esperadas, caso contrario, pode ser necessário obtê-los diretamente do [site da receita](https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=BMPFMBoln3w=).
 2. Faça uma cópia do diretório atual (s3:baseerp/producao/xsd) como backup, e a nomeie indicando o mês/dia em que está sendo feita a atualização. Isto nos permite efetuar um rollback, se necessário.
