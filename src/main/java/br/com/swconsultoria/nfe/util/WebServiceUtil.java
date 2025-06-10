@@ -73,7 +73,7 @@ public class WebServiceUtil {
 
             // Apache Commons Configuration handles case-insensitivity by default for keys.
             // Sections are typically matched as they are in the file.
-            String url = iniConfig.getString(secao + ".usar");
+            String url = iniConfig.getString(secao + ".Usar", null);
 
             //URLS CONSULTA CADASTO
             if (tipoServico.equals(ServicosEnum.CONSULTA_CADASTRO) && (
