@@ -182,12 +182,6 @@
             <artifactId>jasperreports</artifactId>
             <version>${jasper.version}</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.librepdf</groupId>
-                    <artifactId>openpdf</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
