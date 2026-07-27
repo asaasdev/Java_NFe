@@ -27,11 +27,11 @@ public class NfeA3 {
     public static TEnviNFe montaNfeA3(ConfiguracoesNfe config, String xmlAssinado, boolean valida) throws NfeException {
         return EnviarA3.montaNfeA3(ConfiguracoesUtil.iniciaConfiguracoes(config), xmlAssinado, valida);
     }
-    
+
     public static TRetEnviNFe enviarNfeA3(ConfiguracoesNfe config, TEnviNFe enviNFe, DocumentoEnum tipoDocumento) throws NfeException {
         return Enviar.enviaNfe(ConfiguracoesUtil.iniciaConfiguracoes(config), enviNFe, tipoDocumento);
     }
-    
+
     public static String montaXmleventoCancelamento(ConfiguracoesNfe config, TEnvEventoCancelamento enviEvento) throws NfeException {
         return CancelarA3.montaXmleventoCancelamento(ConfiguracoesUtil.iniciaConfiguracoes(config), enviEvento);
     }
@@ -90,5 +90,4 @@ public class NfeA3 {
     public static String criaProcEventoGenericoA3(ConfiguracoesNfe config, String xmlAssinado, TRetEventoGenerico retorno) throws NfeException {
         return EventoGenericoA3.criaProcEventoGenericoA3(ConfiguracoesUtil.iniciaConfiguracoes(config), xmlAssinado, retorno);
     }
-
 }
