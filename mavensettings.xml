@@ -36,12 +36,6 @@
 		to a remote server. | -->
 	<servers>
 		<server>
-			<!-- usuário para download de artefatos -->
-			<id>down.nexus.prod.baseerp.com.br</id>
-            <username>${user}</username>
-            <password>${password}</password>
-		</server>
-		<server>
 			<!-- usuário para upload de artefatos -->
 			<id>up.nexus.prod.baseerp.com.br</id>
             <username>${user}</username>

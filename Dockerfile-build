@@ -8,5 +8,6 @@ ARG nexusPass
 
 WORKDIR /app
 COPY . /app
+RUN find /root/.m2/repository -name "*.lastUpdated" -delete 2>/dev/null || true
 RUN mvn deploy -f pom-base.xml -s mavensettings.xml -Duser=$nexusUser -Dpassword=$nexusPass -Dversao=$nameSpace $DskipTests
 

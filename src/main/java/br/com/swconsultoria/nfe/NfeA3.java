@@ -8,6 +8,8 @@ import br.com.swconsultoria.nfe.dom.enuns.PessoaEnum;
 import br.com.swconsultoria.nfe.exception.NfeException;
 import br.com.swconsultoria.nfe.schemas_eventos.TEnvEventoCancelamento;
 import br.com.swconsultoria.nfe.schemas_eventos.TRetEnvEventoCancelamento;
+import br.com.swconsultoria.nfe.schemas_eventos.TRetEnvEventoGenerico;
+import br.com.swconsultoria.nfe.schemas_eventos.TRetEventoGenerico;
 import br.com.swconsultoria.nfe.schemas.RetDistDFeInt;
 import br.com.swconsultoria.nfe.schemas.TEnviNFe;
 import br.com.swconsultoria.nfe.schemas.TRetEnviNFe;
@@ -25,11 +27,11 @@ public class NfeA3 {
     public static TEnviNFe montaNfeA3(ConfiguracoesNfe config, String xmlAssinado, boolean valida) throws NfeException {
         return EnviarA3.montaNfeA3(ConfiguracoesUtil.iniciaConfiguracoes(config), xmlAssinado, valida);
     }
-    
+
     public static TRetEnviNFe enviarNfeA3(ConfiguracoesNfe config, TEnviNFe enviNFe, DocumentoEnum tipoDocumento) throws NfeException {
         return Enviar.enviaNfe(ConfiguracoesUtil.iniciaConfiguracoes(config), enviNFe, tipoDocumento);
     }
-    
+
     public static String montaXmleventoCancelamento(ConfiguracoesNfe config, TEnvEventoCancelamento enviEvento) throws NfeException {
         return CancelarA3.montaXmleventoCancelamento(ConfiguracoesUtil.iniciaConfiguracoes(config), enviEvento);
     }
@@ -81,4 +83,11 @@ public class NfeA3 {
         return ManifestacaoDestinatarioA3.montarXML(ConfiguracoesUtil.iniciaConfiguracoes(config), evento);
     }
 
+    public static TRetEnvEventoGenerico eventoGenericoA3(ConfiguracoesNfe config, boolean valida, String xmlAssinado) throws NfeException {
+        return EventoGenericoA3.eventoGenericoA3(ConfiguracoesUtil.iniciaConfiguracoes(config), valida, xmlAssinado);
+    }
+
+    public static String criaProcEventoGenericoA3(ConfiguracoesNfe config, String xmlAssinado, TRetEventoGenerico retorno) throws NfeException {
+        return EventoGenericoA3.criaProcEventoGenericoA3(ConfiguracoesUtil.iniciaConfiguracoes(config), xmlAssinado, retorno);
+    }
 }
