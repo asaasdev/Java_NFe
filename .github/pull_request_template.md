@@ -71,6 +71,8 @@ Toda marcação de "Não se aplica" exige a justificativa do motivo ao lado.
     - [ ] Não — explique por que não há risco de retrocompatibilidade:
 
 ### Revisado Local usando o /asaas-code-review
+- [ ] Sim
+- [ ] Não se aplica — Motivo:
 - [ ] (Caso tenha executado a revisão local, confirme no formato "Sim, utilizei o /asaas-code-review (horário da última execução: dd/mm/yyyy hh:mm:ss)". Caso contrário, descreva explicitamente o motivo de não ter usado a revisão local com IA.)
 
 <details><summary>Pontos apontados por /asaas-code-review e refutados ou não aplicados</summary>
