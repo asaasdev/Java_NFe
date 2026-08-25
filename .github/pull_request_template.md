@@ -70,6 +70,6 @@ Toda marcação de "Não se aplica" exige a justificativa do motivo ao lado.
     - [ ] Sim — detalhe os cuidados necessários:
     - [ ] Não — explique por que não há risco de retrocompatibilidade:
 
-### Revisado Local pela IA
+### Revisado Local usando o /asaas-code-review
 - [ ] Sim
 - [ ] Não se aplica — Motivo:
