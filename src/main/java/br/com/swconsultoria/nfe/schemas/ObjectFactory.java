@@ -48,6 +48,8 @@ public class ObjectFactory {
     private final static QName _TNFeInfNFeDetImpostoCOFINS_QNAME = new QName("http://www.portalfiscal.inf.br/nfe", "COFINS");
     private final static QName _TNFeInfNFeDetImpostoIS_QNAME = new QName("http://www.portalfiscal.inf.br/nfe", "IS");
     private final static QName _TNFeInfNFeDetImpostoPIS_QNAME = new QName("http://www.portalfiscal.inf.br/nfe", "PIS");
+    private final static QName _TProtNFeInfProtCMsg_QNAME = new QName("http://www.portalfiscal.inf.br/nfe", "cMsg");
+    private final static QName _TProtNFeInfProtXMsg_QNAME = new QName("http://www.portalfiscal.inf.br/nfe", "xMsg");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: br.com.swconsultoria.nfe.schemas
@@ -89,6 +91,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TCIBSNFe }
+     * 
+     */
+    public TCIBSNFe createTCIBSNFe() {
+        return new TCIBSNFe();
+    }
+
+    /**
      * Create an instance of {@link TIBSCBSTot }
      * 
      */
@@ -105,6 +115,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TTribSN }
+     * 
+     */
+    public TTribSN createTTribSN() {
+        return new TTribSN();
+    }
+
+    /**
      * Create an instance of {@link TProtNFe }
      * 
      */
@@ -118,6 +136,46 @@ public class ObjectFactory {
      */
     public TMonofasia createTMonofasia() {
         return new TMonofasia();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GCBSMonoAdValorem }
+     * 
+     */
+    public TMonofasia.GCBSMonoAdValorem createTMonofasiaGCBSMonoAdValorem() {
+        return new TMonofasia.GCBSMonoAdValorem();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GCBSMonoAdRem }
+     * 
+     */
+    public TMonofasia.GCBSMonoAdRem createTMonofasiaGCBSMonoAdRem() {
+        return new TMonofasia.GCBSMonoAdRem();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdValorem }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdValorem createTMonofasiaGIBSMonoAdValorem() {
+        return new TMonofasia.GIBSMonoAdValorem();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdRem }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdRem createTMonofasiaGIBSMonoAdRem() {
+        return new TMonofasia.GIBSMonoAdRem();
+    }
+
+    /**
+     * Create an instance of {@link TPgtoVinc }
+     * 
+     */
+    public TPgtoVinc createTPgtoVinc() {
+        return new TPgtoVinc();
     }
 
     /**
@@ -433,6 +491,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TPagRef }
+     * 
+     */
+    public TPagRef createTPagRef() {
+        return new TPagRef();
+    }
+
+    /**
      * Create an instance of {@link TTribCompraGov }
      * 
      */
@@ -441,11 +507,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TALCZFMCBS }
+     * 
+     */
+    public TALCZFMCBS createTALCZFMCBS() {
+        return new TALCZFMCBS();
+    }
+
+    /**
      * Create an instance of {@link TTribNFCom }
      * 
      */
     public TTribNFCom createTTribNFCom() {
         return new TTribNFCom();
+    }
+
+    /**
+     * Create an instance of {@link TALCZFMCBSNFe }
+     * 
+     */
+    public TALCZFMCBSNFe createTALCZFMCBSNFe() {
+        return new TALCZFMCBSNFe();
     }
 
     /**
@@ -745,6 +827,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TIBSCBSMonoTot.GTribSN }
+     * 
+     */
+    public TIBSCBSMonoTot.GTribSN createTIBSCBSMonoTotGTribSN() {
+        return new TIBSCBSMonoTot.GTribSN();
+    }
+
+    /**
      * Create an instance of {@link TIBSCBSMonoTot.GIBS.GIBSUF }
      * 
      */
@@ -758,6 +848,30 @@ public class ObjectFactory {
      */
     public TIBSCBSMonoTot.GIBS.GIBSMun createTIBSCBSMonoTotGIBSGIBSMun() {
         return new TIBSCBSMonoTot.GIBS.GIBSMun();
+    }
+
+    /**
+     * Create an instance of {@link TCIBSNFe.GIBSUF }
+     * 
+     */
+    public TCIBSNFe.GIBSUF createTCIBSNFeGIBSUF() {
+        return new TCIBSNFe.GIBSUF();
+    }
+
+    /**
+     * Create an instance of {@link TCIBSNFe.GIBSMun }
+     * 
+     */
+    public TCIBSNFe.GIBSMun createTCIBSNFeGIBSMun() {
+        return new TCIBSNFe.GIBSMun();
+    }
+
+    /**
+     * Create an instance of {@link TCIBSNFe.GCBS }
+     * 
+     */
+    public TCIBSNFe.GCBS createTCIBSNFeGCBS() {
+        return new TCIBSNFe.GCBS();
     }
 
     /**
@@ -793,6 +907,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TTribSN.GIBSSN }
+     * 
+     */
+    public TTribSN.GIBSSN createTTribSNGIBSSN() {
+        return new TTribSN.GIBSSN();
+    }
+
+    /**
+     * Create an instance of {@link TTribSN.GCBSSN }
+     * 
+     */
+    public TTribSN.GCBSSN createTTribSNGCBSSN() {
+        return new TTribSN.GCBSSN();
+    }
+
+    /**
      * Create an instance of {@link TProtNFe.InfProt }
      * 
      */
@@ -801,35 +931,139 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TMonofasia.GMonoPadrao }
+     * Create an instance of {@link TMonofasia.GCBSMonoAdValorem.GMonoPadrao }
      * 
      */
-    public TMonofasia.GMonoPadrao createTMonofasiaGMonoPadrao() {
-        return new TMonofasia.GMonoPadrao();
+    public TMonofasia.GCBSMonoAdValorem.GMonoPadrao createTMonofasiaGCBSMonoAdValoremGMonoPadrao() {
+        return new TMonofasia.GCBSMonoAdValorem.GMonoPadrao();
     }
 
     /**
-     * Create an instance of {@link TMonofasia.GMonoReten }
+     * Create an instance of {@link TMonofasia.GCBSMonoAdValorem.GMonoReten }
      * 
      */
-    public TMonofasia.GMonoReten createTMonofasiaGMonoReten() {
-        return new TMonofasia.GMonoReten();
+    public TMonofasia.GCBSMonoAdValorem.GMonoReten createTMonofasiaGCBSMonoAdValoremGMonoReten() {
+        return new TMonofasia.GCBSMonoAdValorem.GMonoReten();
     }
 
     /**
-     * Create an instance of {@link TMonofasia.GMonoRet }
+     * Create an instance of {@link TMonofasia.GCBSMonoAdValorem.GMonoRet }
      * 
      */
-    public TMonofasia.GMonoRet createTMonofasiaGMonoRet() {
-        return new TMonofasia.GMonoRet();
+    public TMonofasia.GCBSMonoAdValorem.GMonoRet createTMonofasiaGCBSMonoAdValoremGMonoRet() {
+        return new TMonofasia.GCBSMonoAdValorem.GMonoRet();
     }
 
     /**
-     * Create an instance of {@link TMonofasia.GMonoDif }
+     * Create an instance of {@link TMonofasia.GCBSMonoAdValorem.GpBioDiferenca }
      * 
      */
-    public TMonofasia.GMonoDif createTMonofasiaGMonoDif() {
-        return new TMonofasia.GMonoDif();
+    public TMonofasia.GCBSMonoAdValorem.GpBioDiferenca createTMonofasiaGCBSMonoAdValoremGpBioDiferenca() {
+        return new TMonofasia.GCBSMonoAdValorem.GpBioDiferenca();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GCBSMonoAdRem.GMonoPadrao }
+     * 
+     */
+    public TMonofasia.GCBSMonoAdRem.GMonoPadrao createTMonofasiaGCBSMonoAdRemGMonoPadrao() {
+        return new TMonofasia.GCBSMonoAdRem.GMonoPadrao();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GCBSMonoAdRem.GMonoReten }
+     * 
+     */
+    public TMonofasia.GCBSMonoAdRem.GMonoReten createTMonofasiaGCBSMonoAdRemGMonoReten() {
+        return new TMonofasia.GCBSMonoAdRem.GMonoReten();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GCBSMonoAdRem.GMonoRet }
+     * 
+     */
+    public TMonofasia.GCBSMonoAdRem.GMonoRet createTMonofasiaGCBSMonoAdRemGMonoRet() {
+        return new TMonofasia.GCBSMonoAdRem.GMonoRet();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GCBSMonoAdRem.GpBioDiferenca }
+     * 
+     */
+    public TMonofasia.GCBSMonoAdRem.GpBioDiferenca createTMonofasiaGCBSMonoAdRemGpBioDiferenca() {
+        return new TMonofasia.GCBSMonoAdRem.GpBioDiferenca();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdValorem.GMonoPadrao }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdValorem.GMonoPadrao createTMonofasiaGIBSMonoAdValoremGMonoPadrao() {
+        return new TMonofasia.GIBSMonoAdValorem.GMonoPadrao();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdValorem.GMonoReten }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdValorem.GMonoReten createTMonofasiaGIBSMonoAdValoremGMonoReten() {
+        return new TMonofasia.GIBSMonoAdValorem.GMonoReten();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdValorem.GMonoRet }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdValorem.GMonoRet createTMonofasiaGIBSMonoAdValoremGMonoRet() {
+        return new TMonofasia.GIBSMonoAdValorem.GMonoRet();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdValorem.GpBioDiferenca }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdValorem.GpBioDiferenca createTMonofasiaGIBSMonoAdValoremGpBioDiferenca() {
+        return new TMonofasia.GIBSMonoAdValorem.GpBioDiferenca();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdRem.GMonoPadrao }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdRem.GMonoPadrao createTMonofasiaGIBSMonoAdRemGMonoPadrao() {
+        return new TMonofasia.GIBSMonoAdRem.GMonoPadrao();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdRem.GMonoReten }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdRem.GMonoReten createTMonofasiaGIBSMonoAdRemGMonoReten() {
+        return new TMonofasia.GIBSMonoAdRem.GMonoReten();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdRem.GMonoRet }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdRem.GMonoRet createTMonofasiaGIBSMonoAdRemGMonoRet() {
+        return new TMonofasia.GIBSMonoAdRem.GMonoRet();
+    }
+
+    /**
+     * Create an instance of {@link TMonofasia.GIBSMonoAdRem.GpBioDiferenca }
+     * 
+     */
+    public TMonofasia.GIBSMonoAdRem.GpBioDiferenca createTMonofasiaGIBSMonoAdRemGpBioDiferenca() {
+        return new TMonofasia.GIBSMonoAdRem.GpBioDiferenca();
+    }
+
+    /**
+     * Create an instance of {@link TPgtoVinc.GPgto }
+     * 
+     */
+    public TPgtoVinc.GPgto createTPgtoVincGPgto() {
+        return new TPgtoVinc.GPgto();
     }
 
     /**
@@ -1393,6 +1627,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TNFe.InfNFe.Det.Imposto.ICMS.ICMSPrevistoPagtoAntecip }
+     * 
+     */
+    public TNFe.InfNFe.Det.Imposto.ICMS.ICMSPrevistoPagtoAntecip createTNFeInfNFeDetImpostoICMSICMSPrevistoPagtoAntecip() {
+        return new TNFe.InfNFe.Det.Imposto.ICMS.ICMSPrevistoPagtoAntecip();
+    }
+
+    /**
      * Create an instance of {@link TNFe.InfNFe.Det.Prod.GCred }
      * 
      */
@@ -1750,6 +1992,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.portalfiscal.inf.br/nfe", name = "PIS", scope = TNFe.InfNFe.Det.Imposto.class)
     public JAXBElement<TNFe.InfNFe.Det.Imposto.PIS> createTNFeInfNFeDetImpostoPIS(TNFe.InfNFe.Det.Imposto.PIS value) {
         return new JAXBElement<TNFe.InfNFe.Det.Imposto.PIS>(_TNFeInfNFeDetImpostoPIS_QNAME, TNFe.InfNFe.Det.Imposto.PIS.class, TNFe.InfNFe.Det.Imposto.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.portalfiscal.inf.br/nfe", name = "cMsg", scope = TProtNFe.InfProt.class)
+    public JAXBElement<String> createTProtNFeInfProtCMsg(String value) {
+        return new JAXBElement<String>(_TProtNFeInfProtCMsg_QNAME, String.class, TProtNFe.InfProt.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.portalfiscal.inf.br/nfe", name = "xMsg", scope = TProtNFe.InfProt.class)
+    public JAXBElement<String> createTProtNFeInfProtXMsg(String value) {
+        return new JAXBElement<String>(_TProtNFeInfProtXMsg_QNAME, String.class, TProtNFe.InfProt.class, value);
     }
 
 }
