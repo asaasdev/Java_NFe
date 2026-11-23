@@ -1,7 +1,13 @@
 
 package br.com.swconsultoria.nfe.schemas_eventos;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 
 /**
  * <p>Classe Java de anonymous complex type.
@@ -25,6 +31,7 @@ import javax.xml.bind.annotation.*;
  *         &lt;element name="tpEventoAut">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *               &lt;enumeration value="110300"/>
  *               &lt;enumeration value="112110"/>
  *               &lt;enumeration value="112120"/>
  *               &lt;enumeration value="112130"/>
@@ -41,12 +48,20 @@ import javax.xml.bind.annotation.*;
  *               &lt;enumeration value="212120"/>
  *               &lt;enumeration value="412120"/>
  *               &lt;enumeration value="412130"/>
+ *               &lt;enumeration value="412140"/>
+ *               &lt;enumeration value="420110"/>
+ *               &lt;enumeration value="420120"/>
+ *               &lt;enumeration value="420130"/>
+ *               &lt;enumeration value="420140"/>
+ *               &lt;enumeration value="420150"/>
+ *               &lt;enumeration value="420160"/>
+ *               &lt;enumeration value="420170"/>
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
  *         &lt;element name="nProtEvento" type="{http://www.portalfiscal.inf.br/nfe}TProt"/>
  *       &lt;/sequence>
- *       &lt;attribute name="versao">
+ *       &lt;attribute name="versao" use="required">
  *         &lt;simpleType>
  *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *             &lt;whiteSpace value="preserve"/>
@@ -82,7 +97,7 @@ public class DetEvento110001 {
     protected String tpEventoAut;
     @XmlElement(required = true)
     protected String nProtEvento;
-    @XmlAttribute(name = "versao")
+    @XmlAttribute(name = "versao", required = true)
     protected String versao;
 
     /**
