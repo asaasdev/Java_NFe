@@ -12,6 +12,12 @@ descritos a seguir.
 
 ![image](https://github.com/asaasdev/Java_NFe/assets/81778352/90ffb830-2fda-4201-8845-f08351f16495)
 
+> **Se o botão "Sync fork" do GitHub não atualizar a `master`** (ou o fork exigir commits assinados), use a skill `sync-fork-upstream`
+> deste repositório (`.claude/skills/sync-fork-upstream`). No Claude Code, peça: *"use a skill sync-fork-upstream para atualizar o fork com o repositório oficial"*.
+> Ela recria os commits do repositório oficial (`Samuel-Oliveira/Java_NFe`) com a sua assinatura, mantendo conteúdo, autor e mensagem,
+> publica uma branch `sync-assinado-AAAAMMDD` e abre um PR para a `master`. O merge desse PR deve ser feito com **"Create a merge commit"**
+> (squash ou rebase perdem a assinatura). Pré-requisito: chave de assinatura de commits configurada e cadastrada no GitHub como *Signing Key*.
+
 - Criar um branch de desenvolvimento à partir do branch release.
 
 - Baixar o branch na maquina de desenvolvimento e fazer o merge com a branch master(comunidade)
