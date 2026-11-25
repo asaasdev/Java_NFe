@@ -23,11 +23,12 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="cClassTrib" type="{http://www.portalfiscal.inf.br/nfe}TcClassTrib"/>
  *         &lt;element name="indDoacao" type="{http://www.portalfiscal.inf.br/nfe}TIndDoacao" minOccurs="0"/>
  *         &lt;choice minOccurs="0">
- *           &lt;element name="gIBSCBS" type="{http://www.portalfiscal.inf.br/nfe}TCIBS"/>
+ *           &lt;element name="gIBSCBS" type="{http://www.portalfiscal.inf.br/nfe}TCIBS_NFe"/>
  *           &lt;element name="gIBSCBSMono" type="{http://www.portalfiscal.inf.br/nfe}TMonofasia"/>
  *           &lt;element name="gTransfCred" type="{http://www.portalfiscal.inf.br/nfe}TTransfCred"/>
  *           &lt;element name="gAjusteCompet" type="{http://www.portalfiscal.inf.br/nfe}TAjusteCompet"/>
  *         &lt;/choice>
+ *         &lt;element name="gTribSN" type="{http://www.portalfiscal.inf.br/nfe}TTribSN" minOccurs="0"/>
  *         &lt;element name="gEstornoCred" type="{http://www.portalfiscal.inf.br/nfe}TEstornoCred" minOccurs="0"/>
  *         &lt;choice minOccurs="0">
  *           &lt;element name="gCredPresOper" type="{http://www.portalfiscal.inf.br/nfe}TCredPresOper"/>
@@ -50,6 +51,7 @@ import javax.xml.bind.annotation.XmlType;
     "gibscbsMono",
     "gTransfCred",
     "gAjusteCompet",
+    "gTribSN",
     "gEstornoCred",
     "gCredPresOper",
     "gCredPresIBSZFM"
@@ -62,11 +64,12 @@ public class TTribNFe {
     protected String cClassTrib;
     protected String indDoacao;
     @XmlElement(name = "gIBSCBS")
-    protected TCIBS gibscbs;
+    protected TCIBSNFe gibscbs;
     @XmlElement(name = "gIBSCBSMono")
     protected TMonofasia gibscbsMono;
     protected TTransfCred gTransfCred;
     protected TAjusteCompet gAjusteCompet;
+    protected TTribSN gTribSN;
     protected TEstornoCred gEstornoCred;
     protected TCredPresOper gCredPresOper;
     protected TCredPresIBSZFM gCredPresIBSZFM;
@@ -148,10 +151,10 @@ public class TTribNFe {
      * 
      * @return
      *     possible object is
-     *     {@link TCIBS }
+     *     {@link TCIBSNFe }
      *     
      */
-    public TCIBS getGIBSCBS() {
+    public TCIBSNFe getGIBSCBS() {
         return gibscbs;
     }
 
@@ -160,10 +163,10 @@ public class TTribNFe {
      * 
      * @param value
      *     allowed object is
-     *     {@link TCIBS }
+     *     {@link TCIBSNFe }
      *     
      */
-    public void setGIBSCBS(TCIBS value) {
+    public void setGIBSCBS(TCIBSNFe value) {
         this.gibscbs = value;
     }
 
@@ -237,6 +240,30 @@ public class TTribNFe {
      */
     public void setGAjusteCompet(TAjusteCompet value) {
         this.gAjusteCompet = value;
+    }
+
+    /**
+     * Obtém o valor da propriedade gTribSN.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TTribSN }
+     *     
+     */
+    public TTribSN getGTribSN() {
+        return gTribSN;
+    }
+
+    /**
+     * Define o valor da propriedade gTribSN.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TTribSN }
+     *     
+     */
+    public void setGTribSN(TTribSN value) {
+        this.gTribSN = value;
     }
 
     /**

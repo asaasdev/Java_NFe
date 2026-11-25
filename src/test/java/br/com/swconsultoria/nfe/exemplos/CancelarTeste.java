@@ -27,19 +27,20 @@ public class CancelarTeste {
         try {
 
             // Inicia As Configurações
-            ConfiguracoesNfe config = ConfiguracaoTeste.iniciaConfiguracoes(EstadosEnum.GO, AmbienteEnum.HOMOLOGACAO);
+            ConfiguracoesNfe config = ConfiguracaoTeste.iniciaConfiguracoes(EstadosEnum.GO,
+                    AmbienteEnum.valueOf(System.getProperty("ambiente", "HOMOLOGACAO")));
 
             //Agora o evento pode aceitar uma lista de cancelaemntos para envio em Lote.
             //Para isso Foi criado o Objeto Cancela
             Evento cancela = new Evento();
             //Informe a chave da Nota a ser Cancelada
-            cancela.setChave("52260610732644000128550010000927581162933910");
+            cancela.setChave(System.getProperty("chave", "52260610732644000128550010000927581162933910"));
             //Informe o protocolo da Nota a ser Cancelada
-            cancela.setProtocolo("152260027418507");
+            cancela.setProtocolo(System.getProperty("protocolo", "152260027418507"));
             //Informe o CNPJ do emitente
             cancela.setCnpj("10732644000128");
             //Informe o Motivo do Cancelamento
-            cancela.setMotivo("Teste de Cancelamento");
+            cancela.setMotivo(System.getProperty("motivo", "Teste de Cancelamento"));
             //Informe a data do Cancelamento
             cancela.setDataEvento(LocalDateTime.now());
 
