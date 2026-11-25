@@ -22,10 +22,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="CST" type="{http://www.portalfiscal.inf.br/nfe}TCST"/>
  *         &lt;element name="cClassTrib" type="{http://www.portalfiscal.inf.br/nfe}TcClassTrib"/>
  *         &lt;element name="indDoacao" type="{http://www.portalfiscal.inf.br/nfe}TIndDoacao" minOccurs="0"/>
- *         &lt;choice minOccurs="0">
- *           &lt;element name="gIBSCBS" type="{http://www.portalfiscal.inf.br/nfe}TCIBS"/>
- *           &lt;element name="gIBSCBSMono" type="{http://www.portalfiscal.inf.br/nfe}TMonofasia"/>
- *         &lt;/choice>
+ *         &lt;element name="gIBSCBS" type="{http://www.portalfiscal.inf.br/nfe}TCIBS_NFe" minOccurs="0"/>
+ *         &lt;element name="gTribSN" type="{http://www.portalfiscal.inf.br/nfe}TTribSN" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
     "cClassTrib",
     "indDoacao",
     "gibscbs",
-    "gibscbsMono"
+    "gTribSN"
 })
 public class TTribNFCe {
 
@@ -50,9 +48,8 @@ public class TTribNFCe {
     protected String cClassTrib;
     protected String indDoacao;
     @XmlElement(name = "gIBSCBS")
-    protected TCIBS gibscbs;
-    @XmlElement(name = "gIBSCBSMono")
-    protected TMonofasia gibscbsMono;
+    protected TCIBSNFe gibscbs;
+    protected TTribSN gTribSN;
 
     /**
      * Obtém o valor da propriedade cst.
@@ -131,10 +128,10 @@ public class TTribNFCe {
      * 
      * @return
      *     possible object is
-     *     {@link TCIBS }
+     *     {@link TCIBSNFe }
      *     
      */
-    public TCIBS getGIBSCBS() {
+    public TCIBSNFe getGIBSCBS() {
         return gibscbs;
     }
 
@@ -143,35 +140,35 @@ public class TTribNFCe {
      * 
      * @param value
      *     allowed object is
-     *     {@link TCIBS }
+     *     {@link TCIBSNFe }
      *     
      */
-    public void setGIBSCBS(TCIBS value) {
+    public void setGIBSCBS(TCIBSNFe value) {
         this.gibscbs = value;
     }
 
     /**
-     * Obtém o valor da propriedade gibscbsMono.
+     * Obtém o valor da propriedade gTribSN.
      * 
      * @return
      *     possible object is
-     *     {@link TMonofasia }
+     *     {@link TTribSN }
      *     
      */
-    public TMonofasia getGIBSCBSMono() {
-        return gibscbsMono;
+    public TTribSN getGTribSN() {
+        return gTribSN;
     }
 
     /**
-     * Define o valor da propriedade gibscbsMono.
+     * Define o valor da propriedade gTribSN.
      * 
      * @param value
      *     allowed object is
-     *     {@link TMonofasia }
+     *     {@link TTribSN }
      *     
      */
-    public void setGIBSCBSMono(TMonofasia value) {
-        this.gibscbsMono = value;
+    public void setGTribSN(TTribSN value) {
+        this.gTribSN = value;
     }
 
 }

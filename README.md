@@ -1,4 +1,4 @@
-# Java-NFe [![MIT License](https://img.shields.io/github/license/Samuel-Oliveira/Java_NFe.svg) ](https://github.com/Samuel-Oliveira/Java_NFe/blob/master/LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/br.com.swconsultoria/java-nfe.svg?label=Maven%20Central)](https://search.maven.org/artifact/br.com.swconsultoria/java-nfe/4.1.1/jar) [![Coverage Status](https://coveralls.io/repos/github/Samuel-Oliveira/Java_NFe/badge.svg?branch=master)](https://coveralls.io/github/Samuel-Oliveira/Java_NFe?branch=master)
+# Java-NFe [![MIT License](https://img.shields.io/github/license/Samuel-Oliveira/Java_NFe.svg) ](https://github.com/Samuel-Oliveira/Java_NFe/blob/master/LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/br.com.swconsultoria/java-nfe.svg?label=Maven%20Central)](https://search.maven.org/artifact/br.com.swconsultoria/java-nfe/4.3.1/jar) [![Coverage Status](https://coveralls.io/repos/github/Samuel-Oliveira/Java_NFe/badge.svg?branch=master)](https://coveralls.io/github/Samuel-Oliveira/Java_NFe?branch=master)
 Biblioteca Java para consumo do WebService de NFe/NFCe
 
 ### Powered by
@@ -22,7 +22,7 @@ Para Iniciar :
 <dependency>
     <groupId>br.com.swconsultoria</groupId>
     <artifactId>java-nfe</artifactId>
-    <version>4.1.1</version>
+    <version>4.3.1</version>
 </dependency>
 ```
 
@@ -34,7 +34,7 @@ repositories {
     }
 }
 dependencies {
-    implementation "br.com.swconsultoria:java-nfe:4.1.1"
+    implementation "br.com.swconsultoria:java-nfe:4.3.1"
 }
 ```
 
@@ -42,9 +42,9 @@ Veja a Wiki https://github.com/Samuel-Oliveira/Java_NFe/wiki, para ter um Tutori
 
 ________________________________________________________________________________________________
 
-## ⚠️ Atualizando de v4.00.x para v4.1.1?
+## ⚠️ Atualizando de v4.00.x para v4.1.*?
 
-A v4.1.1 **consolidou ~48 sub-packages JAXB em apenas 2** (`schemas` e `schemas_eventos`)
+A v4.1.* **consolidou ~48 sub-packages JAXB em apenas 2** (`schemas` e `schemas_eventos`)
 e renomeou várias classes de evento para evitar colisões. Imports antigos como
 `schema_4.enviNFe.*`, `schema.envEventoCancNFe.*`, `schema.evento112110.DetEvento`
 **não compilam mais**.
@@ -57,6 +57,29 @@ Resumo: `pwsh scripts/migrate.ps1 -ProjectRoot . -BumpPom` (ou `bash scripts/mig
 ________________________________________________________________________________________________
 
 # Historico de Versões
+
+## v4.3.1 - Schemas PL 010h
+- Schemas atualizados para o PL 010h v1.03, com a NT 2026.005 (Simples Nacional): campos tpRegimeIBSCBS e cAtivSN, grupo gTribSN e evento 412140
+- Jackson passa a ser declarado no pom (quem usava a lib sem o Jasper tomava NoClassDefFoundError no IbsCbsUtil)
+- Exemplo novo EnvioNfceIbsCbsProducaoTeste, para medir se a producao da UF ja aceita o layout monofasico reformulado
+
+## v4.3.0 - Schemas PL 010g
+- Adicionado DANFE v2 da NF-e no leiaute da NT 2026.010 (Reforma Tributária: IBS/CBS/IS) com Thymeleaf no lugar do Jasper (Ver manual em [docs/MANUAL-DANFE-V2.md](docs/MANUAL-DANFE-V2.md) e exemplo em: https://github.com/Samuel-Oliveira/Java_NFe/blob/master/src/test/java/br/com/swconsultoria/nfe/impressao/TesteImpressaoDanfeV2.java)
+- Atualizado Schemas
+
+## v4.2.0 - Schemas PL 010f NT 2025.002 v.1.50 e NT 2026.007 v.1.00
+- Alterado Schemas com novo modelo de monofasicos
+- Melhorias no IbsCbsUtil
+- Atualizado Cacert
+
+## v4.1.3 - Schemas PL 010e e RTC v1.40
+- Correcao de Base de calculo Cclasstrib icms 70
+- Correcao com reuso de cclasstrib
+- Correcao proc Eventos sem signature
+
+## v4.1.2 - Schemas PL 010e e RTC v1.40
+- Atualizado Schemas PL 010e e RTC v1.40
+- Atualizado Cacert
 
 ## v4.1.1 - Schemas PL.010d
 - **Consolidação de packages JAXB**: `~48 sub-packages → schemas + schemas_eventos`
