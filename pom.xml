@@ -42,11 +42,11 @@
         <jmockit.version>1.49</jmockit.version>
         <junit-jupiter.version>5.13.3</junit-jupiter.version>
         <lombok.version>1.18.38</lombok.version>
-        <jackson.version>2.14.1</jackson.version>
+        <jackson.version>2.18.12</jackson.version>
         <jasper.version>6.20.6</jasper.version>
         <barbecue.version>1.5-beta1</barbecue.version>
         <zxing.version>3.2.1</zxing.version>
-        <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
+        <thymeleaf.version>3.1.5.RELEASE</thymeleaf.version>
         <openhtmltopdf.version>1.0.10</openhtmltopdf.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <central-publishing-maven-plugin.version>0.12.0</central-publishing-maven-plugin.version>
