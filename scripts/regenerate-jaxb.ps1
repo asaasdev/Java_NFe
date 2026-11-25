@@ -1,10 +1,10 @@
 #Requires -Version 7.0
 <#
 .SYNOPSIS
-    Regenera as classes JAXB do java-nfe v4.1.1 — DOIS packages apenas.
+    Regenera as classes JAXB do java-nfe v4.1.* — DOIS packages apenas.
 
 .DESCRIPTION
-    Estrategia (v4.1.1):
+    Estrategia (v4.1.*):
 
     Package schemas (5 passes sequenciais, sem limpar entre eles):
       1) consSitNFe + retConsSitNFe    — cons-sit-nfe.xjb renomeia TEvento->TEventoConsSitNFe etc.
@@ -419,12 +419,12 @@ Invoke-XjcPass `
 # dinamicamente em scripts/bindings/auto/ para renomear DetEvento -> DetEvento<codigo>.
 # ============================================================
 $EventosIndividuais = @(
-    'e110001', 'e110110', 'e110111', 'e110112', 'e110140',
+    'e110001', 'e110110', 'e110111', 'e110112', 'e110140', 'e110300',
     'e112110', 'e112120', 'e112130', 'e112140', 'e112150',
     'e210200', 'e210210', 'e210220', 'e210240',
     'e211110', 'e211120', 'e211124', 'e211128', 'e211130', 'e211140', 'e211150',
     'e212110', 'e212120',
-    'e412120', 'e412130',
+    'e412120', 'e412130', 'e412140',
     '110150'  # mesmo padrao mas sem prefixo 'e' no arquivo
 )
 
@@ -484,8 +484,32 @@ foreach ($evento in $EventosIndividuais) {
         Write-Host "    extraido: $detEventoClass.java" -ForegroundColor DarkGray
     }
 
-    # Limpar pacote temporario (todas as outras classes — TUf, TCnpj etc. — sao
-    # duplicatas das do package principal e nao sao necessarias).
+    # Alem do DetEvento, o XSD do evento pode definir tipos proprios que nao
+    # existem em nenhum outro package — foi o caso do TEventoPgto, do e110300.
+    # Sem extrair esses, a classe do evento nao compila. O que ja existe em
+    # schemas/ ou schemas_eventos/ e duplicata e fica de fora.
+    if (Test-Path $tmpDir) {
+        Get-ChildItem -Path $tmpDir -Filter '*.java' | Where-Object {
+            $_.Name -notin @('DetEvento.java', 'ObjectFactory.java', 'package-info.java')
+        } | ForEach-Object {
+            # So vale o que ja existe em schemas_eventos: a classe extraida e gravada
+            # ali e referencia o tipo por nome simples, no mesmo package. Existir em
+            # schemas nao satisfaz essa referencia, e pular por causa disso deixaria o
+            # DetEvento sem compilar, sem mensagem nenhuma.
+            $jaExiste = Test-Path (Join-Path $schemasEventosDir $_.Name)
+            if ($jaExiste) {
+                Write-Host "    ja existe em schemas_eventos, nao copiado: $($_.Name)" -ForegroundColor DarkGray
+            } else {
+                $corpo = Get-Content -Path $_.FullName -Raw -Encoding UTF8
+                $corpo = $corpo -replace [regex]::Escape("package $tmpPkg;"), "package $BasePkg.schemas_eventos;"
+                Set-Content -Path (Join-Path $schemasEventosDir $_.Name) -Value $corpo -Encoding UTF8 -NoNewline
+                Write-Host "    extraido (tipo proprio do evento): $($_.Name)" -ForegroundColor DarkGray
+            }
+        }
+    }
+
+    # Limpar pacote temporario (o que sobrou sao duplicatas das classes do
+    # package principal — TUf, TCnpj etc. — e nao sao necessarias).
     if (Test-Path $tmpDir) {
         Remove-Item -Path $tmpDir -Recurse -Force
     }
@@ -509,6 +533,50 @@ if (Test-Path $pkgInfoPath) {
         Set-Content -Path $pkgInfoPath -Value $newPkgInfo -Encoding UTF8 -NoNewline
         Write-Host "  package-info.java schemas_eventos: namespace corrigido para $correctNs" -ForegroundColor Cyan
     }
+}
+
+# ============================================================
+# Pos-processamento: namespace XMLDSig nos tipos de assinatura
+# (regressao da issue #352 / PR #356)
+#
+# Em `schemas` o xjc gera os tipos XMLDSig com
+# namespace="http://www.w3.org/2000/09/xmldsig#" nas anotacoes, porque
+# leiauteNFe_v4.00.xsd traz o xmldsig via <xs:import namespace=...>.
+# Em `schemas_eventos` algum dos passes sobrescreve esses mesmos tipos sem o
+# namespace, e sem ele o unmarshal descarta silenciosamente SignedInfo,
+# SignatureValue e KeyInfo (procEvento sai com <Signature/> vazio).
+#
+# Os dois pacotes geram tipos identicos a menos do `package`, entao copiamos a
+# versao correta de `schemas` trocando apenas a declaracao de package. Isso
+# acompanha automaticamente qualquer mudanca futura no xmldsig-core-schema.
+# ============================================================
+$dsigTypes = @(
+    'SignatureType', 'SignedInfoType', 'SignatureValueType', 'KeyInfoType',
+    'X509DataType', 'ReferenceType', 'TransformType', 'TransformsType'
+)
+$schemasDirJava        = Join-Path $JavaSrcDir ('br/com/swconsultoria/nfe/schemas' -replace '/', [IO.Path]::DirectorySeparatorChar)
+$schemasEventosDirJava = Join-Path $JavaSrcDir ('br/com/swconsultoria/nfe/schemas_eventos' -replace '/', [IO.Path]::DirectorySeparatorChar)
+$dsigCopiados = 0
+
+foreach ($t in $dsigTypes) {
+    $origem  = Join-Path $schemasDirJava "$t.java"
+    $destino = Join-Path $schemasEventosDirJava "$t.java"
+    if (-not (Test-Path $origem)) {
+        Write-Warning "Tipo XMLDSig nao encontrado em schemas (ignorando): $t"
+        continue
+    }
+    $conteudo = Get-Content -Path $origem -Raw -Encoding UTF8
+    if ($conteudo -notmatch 'xmldsig#') {
+        Write-Warning "$t em schemas nao tem namespace xmldsig# — copia abortada para nao propagar versao incorreta."
+        continue
+    }
+    $conteudo = $conteudo -replace 'package br\.com\.swconsultoria\.nfe\.schemas;', 'package br.com.swconsultoria.nfe.schemas_eventos;'
+    Set-Content -Path $destino -Value $conteudo -Encoding UTF8 -NoNewline
+    $dsigCopiados++
+}
+
+if ($dsigCopiados -gt 0) {
+    Write-Host "  tipos XMLDSig: $dsigCopiados copiados de schemas (namespace xmldsig# preservado)" -ForegroundColor Cyan
 }
 
 # ============================================================
@@ -548,5 +616,5 @@ if ($orphans.Count -gt 0) {
 }
 
 Write-Host ""
-Write-Host "Regeneracao v4.1.1 completa." -ForegroundColor Green
+Write-Host "Regeneracao v4.1.* completa." -ForegroundColor Green
 Write-Host "Proximo passo: mvn test-compile" -ForegroundColor DarkGray
