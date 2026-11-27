@@ -9,7 +9,7 @@ podTemplate(
     spec:
       containers:
           - name: docker-container
-            image: baseerp/docker:1.9
+            image: 788758514985.dkr.ecr.sa-east-1.amazonaws.com/docker:3.0
             securityContext:
               privileged: true
             tty: true
@@ -40,6 +40,7 @@ podTemplate(
                 def namespace = "${Ambiente}"
                 def executarTestes = "${Testes}"
                 def imagem_build = "baseerp/services-build"
+                def ecrUrl = "788758514985.dkr.ecr.sa-east-1.amazonaws.com"
                 def versao = "1.0.${currentBuild.number}"
                 def git_branch = ""
                 def DskipTests = "-DskipTests"
@@ -59,11 +60,11 @@ podTemplate(
                 stage('Package') {
                     container('docker-container') {
                         echo '*********************************************************Package************************************************************************'
-                        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USER')]) {
+                        withCredentials([usernamePassword(credentialsId: 'aws_api', passwordVariable: 'AWS_SECRET_KEY', usernameVariable: 'AWS_ACCESS_KEY')]) {
                             withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USER')]) {
-                                def mavenImage = "docker.io/baseerp/maven-services"
-                                def mavenImageVersion = "1.9"
-                                sh label: '', script: "buildah login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD} docker.io"
+                                def mavenImage = ecrUrl + "/maven-services"
+                                def mavenImageVersion = "5.1"
+                                sh label: '', script: '''AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY aws ecr get-login-password --region sa-east-1 | buildah login --username AWS --password-stdin ''' + ecrUrl
                                 sh label: '', script: "buildah build -f Dockerfile-build -t ${imagem_build}:${versao} --build-arg mavenImage=${mavenImage} --build-arg mavenImageVersion=${mavenImageVersion} --build-arg nameSpace=${namespace} --build-arg DskipTests=${DskipTests} --build-arg nexusUser=${NEXUS_USER} --build-arg nexusPass=${NEXUS_PASSWORD}"
                             }
                         }
